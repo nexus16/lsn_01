@@ -1,0 +1,17 @@
+<div class="container">
+  <% if user_signed_in? %>
+    <% if current_user.reporting? @question %>
+      <h5><%= t "already_report" %></h5>
+    <% else %>
+      <%= form_for @supports.report do |f| %>
+        <h4><%= t "report?" %></h4>
+        <%= f.hidden_field :question_id, value: @question.id %>
+        <%= f.text_area :content, class: "form-control materialize-textarea" %>
+        <%= f.submit t("report"), class: "btn btn-primary submit-report" %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <h6><%= t "title_require_sign_in" %></h6>
+    <%= link_to t("log_in"), new_user_session_path %>
+  <% end %>
+</div>

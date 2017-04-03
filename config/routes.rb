@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   get "/page/:page" => "static_pages#show"
   root "static_pages#show", page: "home"
   scope "(:locale)", locale: /en|vi/ do
-    resources :questions, only: :show
     devise_for :users, controllers: {registrations: "registrations"}
   end
   resources :users, only: :show
   get "/admin", to: "admin#index"
+  resources :questions, only: :show
+  resources :reports, only: [:new, :create]
+  resources :votes, only: [:create, :destroy]
 end
