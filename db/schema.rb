@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170402104723) do
+ActiveRecord::Schema.define(version: 20170405014112) do
+
+  create_table "answer_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "answer_anc_desc_idx", unique: true
+    t.index ["descendant_id"], name: "answer_desc_idx"
+  end
 
   create_table "answers", force: :cascade do |t|
     t.integer  "question_id"
@@ -40,6 +48,18 @@ ActiveRecord::Schema.define(version: 20170402104723) do
     t.index ["descendant_id"], name: "category_desc_idx"
   end
 
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string   "data_file_name",               null: false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.string   "type",              limit: 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.integer  "answer_id"
     t.integer  "question_id"
@@ -58,9 +78,9 @@ ActiveRecord::Schema.define(version: 20170402104723) do
     t.string   "picture"
     t.integer  "category_id"
     t.integer  "user_id"
-    t.integer  "vote_count"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "vote_count",  default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.index ["category_id"], name: "index_questions_on_category_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
