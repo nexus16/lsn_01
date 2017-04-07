@@ -3,7 +3,7 @@ class Supports::Home
   end
 
   def list_question
-    Question.all
+    Question.all.limit(5).order(created_at: :DESC)
   end
 
   def hot_question

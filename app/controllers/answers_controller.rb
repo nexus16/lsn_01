@@ -6,16 +6,19 @@ class AnswersController < ApplicationController
   end
 
   def create
-    if params[:answer][:parent_id].to_i > 0
-      parent = @question.answers.find_by(params[:answer].delete(:parent_id))
-      @answer = parent.children.build answer_params
-      @answer.question_id = @question.id
+    if params[:answer][:parent_id]
+      parent = @question.answers.find_by id: params[:answer][:parent_id]
+      if parent
+        @answer = parent.children.build answer_params
+        @answer.question_id = @question.id
+      else
+        respond_to root_path
+      end
     else
       @answer = @question.answers.new answer_params
     end
     respond_to do |format|
       if @answer.save
-        format.html{respond_to @answer}
         format.js
       end
     end
@@ -34,5 +37,6 @@ class AnswersController < ApplicationController
 
   def find_question
     @question = Question.find_by id: params[:question_id]
+    respond_to root_path unless @question
   end
 end

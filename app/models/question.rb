@@ -11,4 +11,8 @@ class Question < ApplicationRecord
   scope :hot_questions, ->{(order vote_count: :DESC).limit 5}
   scope :order_new_questions, ->{order created_at: :desc}
   scope :order_vote_questions, ->{order vote_count: :desc}
+
+  def list_answers
+    answers.roots.order("created_at DESC")
+  end
 end
