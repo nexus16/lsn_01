@@ -1,0 +1,14 @@
+<% if @answer.root? %>
+  $('.btn-add-answer').css('display','block');
+  $('.add-answer').css('display','none');
+  $('.container-answers').prepend('<%= j render "answer", answer: @answer %>');
+  $('.count-answer h5').html('<span><%= @question.answers.count() %></span>
+    <%= t "answer_count" %>');
+<% else %>
+  $('.btn-add-comment').css('display','block');
+  $('.add-comment').css('display','none');
+  $('#answer_<%= @answer.parent.id %> .container-comments')
+    .prepend('<%= j render "answers/comment", comment: @answer %>');
+  $('.count-answer h5').html('<span><%= @question.answers.count() %></span>
+    <%= t "answer_count" %>');
+<% end %>

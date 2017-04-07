@@ -19,17 +19,27 @@
         </span>
         <div class="content_question">
           <p>
-            <%= @question.content %>
+            <%= raw @question.content %>
           </p>
         </div>
         <div class="secondary-content">
-          <span><%= @question.created_at %></span>
+          <span><%= time_ago_in_words @question.created_at %></span>
         </div>
+
         <table class="question-footer">
           <tr>
-            <td class="add-comment">
-              <%= link_to t("add_answer"), "#" %>
+            <td class="btn-add-answer">
+              <span><%= t "button.add_answer" %></span>
             </td>
+            <% if current_user %>
+              <td class="add-answer">
+                <%= form_for [@question,@answer], remote: true do |f| %>
+                  <%= f.hidden_field :user_id, value: current_user.id %>
+                  <%= f.text_area :content %>
+                  <%= f.submit "submit" %>
+                <% end %>
+              </td>
+            <% end %>
             <td class="report">
               <%= link_to "#" do %>
                 <i class="material-icons">flag</i>

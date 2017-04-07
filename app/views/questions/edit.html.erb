@@ -1,0 +1,18 @@
+<div class="container row">
+  <div class="col s2">
+    <select class="choose_class" style="display: block;">
+      <%= @list_class.each do |ls| %>
+        <option value="<%= ls.id %>"><%= ls.name %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <%= form_for @question do |f| %>
+      <%= f.select :category_id,[],{},{class: "display_object"} %>
+      <%= f.label :title %>
+      <%= f.text_area :title %>
+      <%= f.label :content %>
+      <%= f.text_area :content, class: "ckeditor" %>
+      <%= f.submit :submit, class: "btn btn-primary" %>
+  <% end %>
+</div>
