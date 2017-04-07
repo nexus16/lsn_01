@@ -1,7 +1,4 @@
-<div class="card-panel teal lighten-2">
-  <%= t "button.create_question" %>
-</div>
-<div class="card-panel teal lighten-2">
+<div class="card-panel teal lighten-2 margin-5">
   <%= t "button.find_by_class" %>
 </div>
 <div class="row list-class" >
@@ -12,7 +9,10 @@
         <div class="row">
           <% c.descendants.each do |descendant| %>
             <div class="col m4 ">
-              <div class="card-panel grey"><%= descendant.name %></div>
+              <div class="card-panel grey">
+                <%= link_to descendant.name, descendant, class: "text-white",
+                  "data-turbolinks": false %>
+              </div>
             </div>
           <% end %>
         </div>
@@ -20,7 +20,7 @@
     </div>
   <% end %>
 </div>
-<div class="card-panel teal lighten-2">
+<div class="card-panel teal lighten-2 margin-5">
   <%= t "button.find_by_object" %>
 </div>
 <div class="row list-class">

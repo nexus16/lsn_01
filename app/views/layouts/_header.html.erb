@@ -1,6 +1,6 @@
 <ul id="dropdown1" class="dropdown-content">
   <li><%= link_to t("link.profile"), "#" %></li>
-  <li><%= link_to t("link.sign_out"), "#" %></li>
+  <li><%= link_to t("link.sign_out"), destroy_user_session_path, method: :delete %></li>
 </ul>
 <nav class="header">
   <div class="nav-wrapper row">
@@ -19,14 +19,21 @@
       </form>
     </div>
     <ul class="right hide-on-med-and-down col m4">
-      <li><a class="waves-effect waves-light btn create_question">
-        <%= t "button.create" %></a></li>
-      <li class="avatar">
-        <a class="dropdown-button" href="#" data-activates="dropdown1">
-          <img src="https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-16069
-            16_960_720.png" alt="avatar" class="circle">
-        </a>
+      <li>
+        <%= link_to t("button.create"),new_question_path, class: "waves-effect
+          waves-light btn create_question" ,"data-turbolinks": false %>
       </li>
+      <% if current_user %>
+        <li class="avatar">
+          <a class="dropdown-button" href="#" data-activates="dropdown1">
+            <%= current_user.username %>
+          </a>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to t("link.login"), new_user_session_path, method: :get %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </nav>

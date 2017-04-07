@@ -1,4 +1,4 @@
-class Supports::Category
+class Supports::CategorySupport
   def initialize category
     @category = category
   end

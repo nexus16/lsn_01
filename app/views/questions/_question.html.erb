@@ -18,17 +18,28 @@
         </span>
         <div class="content_question">
           <p>
-            <%= @question.content %>
+            <%= raw @question.content %>
           </p>
         </div>
         <div class="secondary-content">
-          <span><%= @question.created_at %></span>
+          <span><%= time_ago_in_words @question.created_at %></span>
         </div>
+
         <table class="question-footer">
           <tr>
-            <td class="add-comment">
-              <%= link_to t("add_answer"), "#" %>
+            <td class="btn-add-answer">
+              <span><%= t "button.add_answer" %></span>
             </td>
+            <% if current_user %>
+              <td class="add-answer">
+                <%= form_for [@question, @supports_question.new_answer],
+                  remote: true do |f| %>
+                  <%= f.hidden_field :user_id, value: current_user.id %>
+                  <%= f.text_area :content %>
+                  <%= f.submit "submit" %>
+                <% end %>
+              </td>
+            <% end %>
             <td id="flag-report">
               <% if !user_signed_in? || !(current_user.reporting? @question) %>
                 <div class="report">
@@ -45,6 +56,7 @@
                   <% end %>
                 </div>
               <% end %>
+            <td class="report">
               <div id="report" class="modal modal-report">
                 <div class="modal-content">
                   <%= render @supports_question.report %>

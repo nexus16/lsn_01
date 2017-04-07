@@ -20,6 +20,8 @@ class AnswersController < ApplicationController
     end
     respond_to do |format|
       if @answer.save
+        @supports_question = Supports::Question.new @question, user_signed_in?,
+          current_user
         format.js
       end
     end

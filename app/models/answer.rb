@@ -7,4 +7,6 @@ class Answer < ApplicationRecord
 
   scope :order_new_answers, ->{order created_at: :desc}
   scope :order_vote_answers, ->{order vote_count: :desc}
+
+  has_closure_tree
 end
