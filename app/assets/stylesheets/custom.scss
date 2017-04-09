@@ -2,7 +2,7 @@
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 
 $red: #f00;
-
+$blue-light: #29b6f6;
 // question page
 .medal {
   margin-left: 5px;
@@ -34,12 +34,27 @@ $red: #f00;
       font-size: 19px;
     }
   }
+
+  .success-report {
+    text-align: right;
+
+    i {
+      color: $red;
+      font-size: 16px;
+    }
+
+    span {
+      color: $red;
+      font-size: 19px;
+    }
+  }
 }
 
 .container-question {
   .vote {
     font-size: 30px;
     max-width: 75px;
+    text-align: center;
     width: 10%;
 
     i {
@@ -75,10 +90,11 @@ $red: #f00;
   }
 }
 
-.button-add-answer {
-  height: 18em;
-  left: 95%;
-  position: fixed;
-  top: 50%;
-  width: 30em;
+.btn-vote {
+  background-color: $blue-light;
+}
+
+.noti-unvote {
+  height: 30%;
+  width: 30%;
 }

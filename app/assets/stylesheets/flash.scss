@@ -1,0 +1,25 @@
+$white: #fff;
+$danger-color: #ef9a9a;
+$success-color: #b2ebf2;
+$warning-color: #ffff8d;
+
+.alert-danger {
+  background-color: $danger-color;
+  border-radius: 10px;
+  color: $white;
+  padding: 10px;
+}
+
+.alert-success {
+  background-color: $success-color;
+  border-radius: 10px;
+  color: $white;
+  padding: 10px;
+}
+
+.alert-warning {
+  background-color: $warning-color;
+  border-radius: 10px;
+  color: $white;
+  padding: 10px;
+}

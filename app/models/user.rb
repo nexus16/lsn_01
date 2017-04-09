@@ -13,4 +13,8 @@ class User < ApplicationRecord
     source_type: Answer.name
 
   scope :hot_user, ->{(order vote_count: :DESC).limit 5}
+
+  def reporting? question
+    reporting.include? question
+  end
 end
