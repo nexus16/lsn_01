@@ -21,4 +21,8 @@ class Supports::Question
   def answers
     @question.answers
   end
+
+  def new_answer
+    Answer.new
+  end
 end
