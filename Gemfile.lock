@@ -54,9 +54,19 @@ GEM
       bundler (~> 1.2)
       thor (~> 0.18)
     byebug (9.0.6)
+    carrierwave (1.0.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
+    ckeditor (4.2.2)
+      cocaine
+      orm_adapter (~> 0.5.0)
+    climate_control (0.1.0)
     closure_tree (6.5.0)
       activerecord (>= 4.1.0)
       with_advisory_lock (>= 3.0.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     code_analyzer (0.4.7)
       sexp_processor
     codeclimate-engine-rb (0.4.0)
@@ -122,6 +132,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mini_magick (4.7.0)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
@@ -279,6 +290,8 @@ DEPENDENCIES
   brakeman
   bundler-audit
   byebug
+  carrierwave
+  ckeditor
   closure_tree
   coffee-rails (~> 4.2)
   config
@@ -290,6 +303,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   materialize-sass
+  mini_magick
   puma (~> 3.0)
   pundit
   rails (~> 5.0.2)
