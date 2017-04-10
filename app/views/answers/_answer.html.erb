@@ -1,13 +1,7 @@
 <table>
   <tr>
-    <td class="vote">
-      <%= link_to "#" do %>
-        <i class="material-icons" %>add</i>
-      <% end %>
-      <div class="vote-point">+<%= answer.vote_count %></div>
-      <%= link_to "#" do %>
-        <i class="material-icons" %>remove</i>
-      <% end %>
+    <td id="vote-form-answer-<%= answer.id %>" class="vote">
+      <%= render "votes/vote", votable: answer, vote: vote %>
     </td>
     <td class="collection">
       <div class="collection-item avatar">

@@ -17,5 +17,7 @@
   </h5>
 </div>
 <div class="container-answers">
-  <%= render @supports_question.answers %>
+  <% @supports_question.answers.each_with_index do |answer, index| %>
+    <%= render answer, vote: @supports_question.vote_answers[index] %>
+  <% end %>
 </div>

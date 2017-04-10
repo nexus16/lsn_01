@@ -1,1 +1,8 @@
-$('#vote_form').html('<%= j render "votes/vote", votable: @question %>');
+$('#vote-form-question').html('<%= j render "votes/vote", votable: @question,
+  vote: @supports_question.vote_question %>');
+
+<% @supports_question.answers.each_with_index do |answer, index| %>
+  $('#vote-form-answer-<%= answer.id %>').
+    html('<%= j render "votes/vote", votable: answer,
+    vote: @supports_question.vote_answers[index] %>');
+<% end %>

@@ -38,9 +38,9 @@ class VotesController < ApplicationController
   end
 
   def init_vote_js
-    @question = Question.find_by id: params[:vote][:votable_id]
+    @question = Question.find_by id: params[:vote][:question_id]
     if @question
-      @supports = Supports::Question.new @question, user_signed_in?,
+      @supports_question = Supports::Question.new @question, user_signed_in?,
         current_user
     else
       flash[:danger] = t "question_not_found"

@@ -25,4 +25,22 @@ class Supports::Question
   def new_answer
     Answer.new
   end
+
+  def vote_answers
+    votes = []
+    new_vote = Vote.new
+    if @user_signed_in
+      user_voted = Vote.where(user_id: @current_user.id,
+        votable_type: Answer.name)
+      answers.each do |answer|
+        vote = user_voted.detect {|v| v[:votable_id] == answer.id} || new_vote
+        votes << vote
+      end
+    else
+      answers.each do
+        votes << new_vote
+      end
+    end
+    return votes
+  end
 end
