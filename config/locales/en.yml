@@ -110,3 +110,5 @@ en:
   report: "Report"
   statistic: "Statistic"
   dashboard: "Dashboard"
+  pundit:
+    default: "You are not authorized to perform this action."
