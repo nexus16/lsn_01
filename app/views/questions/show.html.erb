@@ -12,10 +12,10 @@
 </div>
 <div class="count-answer">
   <h5>
-    <span><%= @supports.answers.count() %></span>
+    <span><%= @supports_question.answers.count() %></span>
     <%= t "answer_count" %>
   </h5>
 </div>
 <div class="container-answers">
-  <%= render @supports.answers %>
+  <%= render @supports_question.answers %>
 </div>

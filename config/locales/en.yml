@@ -26,7 +26,6 @@ en:
     reached: "~10k"
   add_answer: "add a answer"
   report: "Report"
-  add_comment: "add a comment"
   answer_count: "Answer"
   button:
     create_question: "create question"
@@ -38,6 +37,8 @@ en:
     create: "create"
     top_question: "Top question"
     top_user: "Top user"
+    add_answer: "Add a answer..."
+    add_comment: "Add a comment..."
   text:
     footer: "© 2017 Framgia-team-training"
     logo: "logo"
@@ -47,9 +48,13 @@ en:
     thumb_up: "thumb_up"
     search: "search"
     close: "close"
+    Choose_class: "Choose class"
+    create: "create"
+    clear: "clear"
   link:
     sign_out: "Sign out"
     profile: "profile"
+    login: "login"
   fake:
     linh: "linh"
     data:  "sublime de hay depho json socsialLearing ds"
@@ -110,6 +115,18 @@ en:
   report: "Report"
   statistic: "Statistic"
   dashboard: "Dashboard"
+  search: "search"
+  close: "close"
+  flash:
+    question_not_found: "question not found"
+    answer_not_found: "answer not found"
+    update_success: "update success"
+    update_false: "update false"
+    delete_success: "delete success"
+    delete_false: "delete false"
+    create_question_succes: "create question succes"
+    create_question_false: "create question false"
+    not_curren_user: "not curren user"
   report?: "Why do you report"
   success_report: "reported successful"
   failure_report: "report failure"
@@ -122,3 +139,5 @@ en:
     users can earn extra privileges like posting, commenting, and voting."
   vote_failed: "Vote failed"
   question_not_found: "Question not found"
+  pundit:
+    notifications: "user not permit action"

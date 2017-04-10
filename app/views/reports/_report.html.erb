@@ -3,7 +3,7 @@
     <% if current_user.reporting? @question %>
       <h5><%= t "already_report" %></h5>
     <% else %>
-      <%= form_for @supports.report do |f| %>
+      <%= form_for @supports_question.report do |f| %>
         <h4><%= t "report?" %></h4>
         <%= f.hidden_field :question_id, value: @question.id %>
         <%= f.text_area :content, class: "form-control materialize-textarea" %>
