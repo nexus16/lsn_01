@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
 
   def user_not_authorized
     flash[:error] = t "pundit.notifications"
-    redirect_to request.referrer || new_user_session_path
+    redirect_to request.referer || new_user_session_path
   end
 end

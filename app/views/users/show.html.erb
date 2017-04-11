@@ -1,25 +1,28 @@
-<nav class="nav-extended profile-nav">
+<nav class="nav-extended profile-nav container">
   <div class="nav-content">
-    <ul class="tabs tabs-transparent">
+    <ul class="tabs">
       <li class="tab">
         <%= link_to t("profile"), "#profile", class: "active" %>
       </li>
       <li class="tab">
         <%= link_to t("activity"), "#activity" %>
       </li>
-      <li class="tab user">
+      <li class="tab user disabled">
         <%= link_to "#" do %>
           <%= @user.username %>
-          <%= image_tag "avatar.png", class: "circle" %>
+          <%= image_tag "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-
+            1606916_960_720.png", class: "circle" %>
         <% end %>
       </li>
     </ul>
   </div>
 </nav>
-<div id="profile" class="col s12 profile">
+
+<div id="profile" class="col s12 profile container">
   <div class="collection">
     <div class="collection-item">
-      <%= image_tag "avatar.png", class: "avatar" %>
+      <%= image_tag "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-
+        1606916_960_720.png", class: "avatar" %>
       <div class="content-profile">
         <span class="title"><%= @user.username %></span><br>
         <span><%= t "fake.point" %></span>
@@ -49,7 +52,7 @@
     <%= render "shared/badges" %>
   </div>
 </div>
-<div id="activity" class="col s12 activity">
+<div id="activity" class="col s12 activity container">
   <div class="statistic_graphic">
     <%= image_tag "graphic.png" %>
   </div>

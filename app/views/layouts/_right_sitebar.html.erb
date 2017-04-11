@@ -5,9 +5,11 @@
   <ul class="collection margin-0">
     <% @supports.hot_user.each do |user| %>
       <li class="collection-item avatar">
-        <img src="https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_
-          960_720.png" alt="" class="circle">
-        <span class="title"><%= link_to user.username, "#" %> </span>
+        <%= link_to user_path user do %>
+          <img src="https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_
+            960_720.png" alt="" class="circle">
+        <% end %>
+        <span class="title"><%= link_to user.username, user_path(user) %> </span>
         <p class="group-count">
           <i class="material-icons"><%= t "text.grade" %></i>
           <strong><%= user.vote_count %></strong>
@@ -24,7 +26,7 @@
     <% @supports.hot_question.each do |question| %>
       <li class="collection-item">
         <p><%= question.content %></p>
-        <p><%= link_to question.user.username, "#" %></p>
+        <p><%= link_to question.user.username, user_path(question.user) %></p>
         <p class="group-count">
           <i class="material-icons"><%= t "text.thumb_up" %></i>
           <strong><%= question.vote_count %></strong>
