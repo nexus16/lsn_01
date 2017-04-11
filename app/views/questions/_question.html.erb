@@ -1,7 +1,8 @@
 <table>
   <tr>
-    <td id="vote_form" class="vote">
-      <%= render "votes/vote", votable: @question %>
+    <td id="vote-form-question" class="vote">
+      <%= render "votes/vote", votable: @question,
+        vote: @supports_question.vote_question %>
     </td>
     <td class="collection">
       <div class="collection-item avatar">
