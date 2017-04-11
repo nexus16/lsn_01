@@ -1,13 +1,1 @@
-<div class="row">
-  <div class="col s2 left-sitebar">
-    <%= render "layouts/left_sitebar" %>
-  </div>
-  <div class="col s7 offset-s2 list-question">
-    <% @supports.list_question.each do |question| %>
-      <%= render "shared/question", question: question %>
-    <% end %>
-  </div>
-  <div class="col s3 right-sitebar">
-    <%= render "layouts/right_sitebar" %>
-  </div>
-</div>
+<%= render "shared/list_questions", list_questions: @supports.list_question %>

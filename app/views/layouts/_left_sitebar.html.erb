@@ -26,7 +26,10 @@
 <div class="row list-class">
   <% @supports.list_object.each do |object| %>
     <div class="col m4">
-      <div class="card-panel blue"><%= object %></div>
+      <div class="card-panel blue text-white">
+        <%= link_to object ,categories_path(object: object),
+          class: "text-white" %>
+      </div>
     </div>
   <% end %>
 </div>
