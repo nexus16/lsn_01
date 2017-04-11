@@ -1,23 +1,37 @@
-<div class="topic-title">
-  <div class="container">
-    <h4>
-      <%= link_to question_path do %>
-        <%= @question.title %>
-      <% end %>
-    </h4>
+<%= content_for :body_attributes, 'data-no-turbolink' %>
+<div class="row">
+  <div class="col s2 left-sitebar card">
+    <%= render "layouts/left_sitebar" %>
   </div>
-</div>
-<div class="container-question">
-  <%= render @question %>
-</div>
-<div class="count-answer">
-  <h5>
-    <span><%= @supports_question.answers.count() %></span>
-    <%= t "answer_count" %>
-  </h5>
-</div>
-<div class="container-answers">
-  <% @supports_question.answers.each_with_index do |answer, index| %>
-    <%= render answer, vote: @supports_question.vote_answers[index] %>
-  <% end %>
+  <div class="col s7 offset-s2">
+    <div class="topic-title">
+      <div>
+        <h4>
+          <%= link_to "#" do %>
+            <%= @question.title %>
+          <% end %>
+        </h4>
+      </div>
+    </div>
+    <div class="container-question">
+      <%= render @question %>
+    </div>
+    <div>
+
+    </div>
+    <div class="count-answer">
+      <h5>
+        <span><%= @supports_question.answers.count %></span>
+        <%= t "answer_count" %>
+      </h5>
+    </div>
+    <div class="container-answers">
+      <% @supports_question.answers.each_with_index do |answer, index| %>
+        <%= render answer, vote: @supports_question.vote_answers[index] %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col s3 right-sitebar">
+    <%= render "layouts/right_sitebar" %>
+  </div>
 </div>

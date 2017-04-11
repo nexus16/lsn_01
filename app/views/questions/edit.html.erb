@@ -1,0 +1,10 @@
+<div class="container row">
+  <div class="col s2">
+    <select class="choose_class" style="display: block;">
+      <%= @list_class.each do |ls| %>
+        <option value="<%= ls.id %>"><%= ls.name %></option>
+      <% end %>
+    </select>
+  </div>
+  <%= render "form_question" %>
+</div>

@@ -1,8 +1,9 @@
 class CategoriesController < ApplicationController
-  before_action :find_category, only: :show
 
   def show
-    @support = Supports::Category.new category
+    category = Category.find_by id: params[:id]
+    redirect_to root_path unless category
+    @support = Supports::CategorySupport.new category
     if category.root?
       respond_to do |format|
         format.html
@@ -11,11 +12,5 @@ class CategoriesController < ApplicationController
     else
       @supports = Supports::Home.new
     end
-  end
-
-  private
-  def find_category
-    category = Category.find_by id: params[:id]
-    redirect_to root_path unless category
   end
 end

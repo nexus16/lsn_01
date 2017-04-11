@@ -1,4 +1,9 @@
 $white: #fff;
+$black: #000;
+
+.page-body {
+  min-height: 500px;
+}
 
 .avatar {
   .circle {
@@ -41,7 +46,12 @@ $white: #fff;
   position: fixed;
 
   .card-panel {
+    margin-bottom: 0;
     padding: 10px;
+  }
+
+  .card {
+    margin-bottom: 0;
   }
 
   .list-class {
@@ -51,6 +61,10 @@ $white: #fff;
     .row {
       display: none;
     }
+  }
+
+  .col.m4 {
+    padding: 0 5px;
   }
 
 }
@@ -75,4 +89,16 @@ $white: #fff;
   .avatar {
     margin-top: 10px;
   }
+}
+
+.margin-5 {
+  margin: 0 -5px;
+}
+
+.text-white {
+  color: $white;
+}
+
+.text-black {
+  color: $black;
 }
