@@ -1,8 +1,13 @@
-<%= form_for @question do |f| %>
+<%= form_for @question, html: {class: "form-new-question"} do |f| %>
   <%= f.select :category_id, [], {}, {class: "display_object"} %>
   <%= f.label :title %>
   <%= f.text_area :title %>
+  <%= f.label :tag_list, t("tag") %>
+  <%= f.hidden_field :tag_list, class: "tag-list"%>
+  <div class="tag-list"></div>
+  <input type="text" name="name" class="tag-autocomplete-search">
+  <div class="result"></div>
   <%= f.label :content %>
-  <%= f.text_area :content, class: "ckeditor" %>
+  <%= f.cktext_area :content %>
   <%= f.submit :submit, class: "btn btn-primary" %>
 <% end %>

@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   resources :reports, only: [:new, :create]
   resources :votes, only: [:create, :destroy]
   resources :searches
+  get "/category/:name", to: "categories#index"
+  resources :tags
 end

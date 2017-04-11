@@ -20,6 +20,11 @@
             <%= question.category.name %>
           <% end %>
         </span>
+        <% question.tag_list.each do |tag| %>
+          <%= link_to tag_path(tag) do %>
+            <span class="chip"><%= tag %></span>
+          <% end %>
+        <% end %>
       </p>
       <p class="group-count">
         <i class="material-icons"><%= t "text.grade" %></i>
