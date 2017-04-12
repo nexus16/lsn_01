@@ -12,12 +12,12 @@
   </ul>
 </div>
 <div id="question_newest" class="col s12 collection">
-  <% @supports.newest_questions.each do |post| %>
+  <% @supports_user.newest_questions.each do |post| %>
     <%= render "shared/post", post: post %>
   <% end %>
 </div>
 <div id="question_votest" class="col s12 collection">
-  <% @supports.votest_questions.each do |post| %>
+  <% @supports_user.votest_questions.each do |post| %>
     <%= render "shared/post", post: post %>
   <% end %>
 </div>
