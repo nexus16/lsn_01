@@ -5,6 +5,6 @@ class UsersController < ApplicationController
       flash[:danger] = t "user_not_found"
       render root_path
     end
-    @supports = Supports::ProfileUser.new @user
+    @supports_user = Supports::ProfileUser.new @user
   end
 end
