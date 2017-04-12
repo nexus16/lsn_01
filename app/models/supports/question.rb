@@ -33,7 +33,7 @@ class Supports::Question
       user_voted = Vote.where(user_id: @current_user.id,
         votable_type: Answer.name)
       answers.each do |answer|
-        vote = user_voted.detect {|v| v[:votable_id] == answer.id} || new_vote
+        vote = user_voted.find{|v| v[:votable_id] == answer.id} || new_vote
         votes << vote
       end
     else
