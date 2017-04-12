@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   protect_from_forgery with: :exception
   before_action :set_locale
+  before_action :load_sitebar
 
   private
 
@@ -13,5 +14,9 @@ class ApplicationController < ActionController::Base
   def user_not_authorized
     flash[:error] = t "pundit.notifications"
     redirect_to request.referer || new_user_session_path
+  end
+
+  def load_sitebar
+    @supports = Supports::Home.new
   end
 end

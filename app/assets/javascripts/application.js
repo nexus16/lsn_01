@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require_tree .
 //= require materialize-sprockets
+//= require ckeditor/init
 $(document).ready(function(){
   $('.dropdown-button').dropdown();
   $('select').material_select('destroy');

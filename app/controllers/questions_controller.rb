@@ -1,11 +1,10 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, except: :show
-  before_action :find_question, except: :new
+  before_action :find_question, except: [:new, :create]
   before_action :list_classes, only: [:new, :edit]
   before_action :authorize_question, only: [:update, :edit, :destroy]
 
   def show
-    @supports = Supports::Home.new
     @supports_question = Supports::Question.new @question, user_signed_in?,
       current_user
   end
