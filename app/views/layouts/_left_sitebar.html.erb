@@ -10,8 +10,7 @@
           <% c.descendants.each do |descendant| %>
             <div class="col m4 ">
               <div class="card-panel grey">
-                <%= link_to descendant.name, descendant, class: "text-white",
-                  "data-turbolinks": false %>
+                <%= link_to descendant.name, descendant, class: "text-white" %>
               </div>
             </div>
           <% end %>

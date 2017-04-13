@@ -1,0 +1,24 @@
+<div class="suggestions">
+  <% if @questions.suggestions.present? %>
+    <h5>
+      <%= t "Search_suggestions" %>
+      <%= link_to @questions.suggestions.first,
+        searches_path(query: @questions.suggestions.first) %>
+    </h5>
+  <% end %>
+</div>
+<div class="search-result">
+  <% if @questions.try(:with_details).present? %>
+    <% @questions.with_details.each do |question, details| %>
+      <%= render "result", question: question, details: details %>
+    <% end %>
+    <%= will_paginate @questions %>
+  <% else %>
+    <% @questions.each do |question| %>
+      <div class="card">
+        <h4><%= link_to question.title, question %></h4>
+        <q><%= question.content %></q>
+      </div>
+    <% end %>
+  <% end %>
+</div>

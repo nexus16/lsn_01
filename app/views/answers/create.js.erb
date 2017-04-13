@@ -1,7 +1,8 @@
 <% if @answer.root? %>
   $('.btn-add-answer').css('display', 'block');
   $('.add-answer').css('display','none');
-  $('.container-answers').prepend('<%= j render "answer", answer: @answer %>');
+  $('.container-answers').prepend('<%= j render "answer",
+    answer: @answer, vote: Vote.new %>');
   $('.count-answer h5').html('<%= j render "shared/answer_count",
     question: @question %>');
 <% else %>

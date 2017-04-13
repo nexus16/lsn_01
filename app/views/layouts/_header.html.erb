@@ -3,21 +3,21 @@
     <div class="col m2">
       <%= link_to t("text.logo"),root_path, class: "brand-logo" %>
     </div>
-    <div class="col m6">
-      <form>
+    <div class="col m6 nav-wrapper">
+      <%= form_tag searches_path, method: :get do %>
         <div class="input-field">
-          <input id="search" type="search" required>
+          <%= search_field_tag :query, params[:query] %>
           <label class="label-icon" for="search">
             <i class="material-icons"><%= t "search" %></i>
           </label>
           <i class="material-icons"><%= t "close" %></i>
         </div>
-      </form>
+      <% end %>
     </div>
     <ul class="right hide-on-med-and-down col m4">
       <li>
         <%= link_to t("button.create"),new_question_path, class: "waves-effect
-          waves-light btn create_question" ,"data-turbolinks": false %>
+          waves-light btn create_question" %>
       </li>
       <% if current_user %>
         <li class="avatar">

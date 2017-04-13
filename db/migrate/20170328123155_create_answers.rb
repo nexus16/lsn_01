@@ -6,7 +6,7 @@ class CreateAnswers < ActiveRecord::Migration[5.0]
       t.string :picture
       t.integer :user_id
       t.integer :parent_id
-      t.integer :vote_count
+      t.integer :vote_count, default: 0
 
       t.timestamps
     end

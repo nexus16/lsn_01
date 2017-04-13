@@ -141,3 +141,5 @@ en:
   question_not_found: "Question not found"
   pundit:
     notifications: "user not permit action"
+  Search_suggestions: "Search suggestions: "
+  avatar: "avatar"

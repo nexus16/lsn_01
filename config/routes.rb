@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   resources :questions, only: :show
   resources :reports, only: [:new, :create]
   resources :votes, only: [:create, :destroy]
+  resources :searches
 end

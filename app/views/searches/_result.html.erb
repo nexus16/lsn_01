@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col s1 avatar">
       <%= link_to user_path question.user do %>
-        <img src="https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606
-          916_960_720.png" alt="avatar" class="circle">
+        <%= image_tag "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-
+          1606916_960_720.png", alt: t("avatar"), class: "circle" %>
       <% end %>
     </div>
     <div class="col s11 padding-left-20">
@@ -12,15 +12,25 @@
         <span class="space"></span>
         <span><%= time_ago_in_words question.created_at %></span>
       </p>
-      <p>
-        <%= link_to raw(question.content), question %>
+      <div>
+        <% if details[:highlight][:title] %>
+          <h5><%= link_to simple_format(details[:highlight][:title]),
+            question %></h5>
+        <% else %>
+          <h4><%= link_to question.title, question %></h4>
+        <% end %>
+        <% if details[:highlight][:content] %>
+          <q><%= simple_format details[:highlight][:content] %></q>
+        <% else %>
+          <q><%= question.content %></q>
+        <% end %>
         <span class="chip">
           <%= link_to question.category, class: "text-black" do %>
             <%= question.category.ancestors[0].name %> -
             <%= question.category.name %>
           <% end %>
         </span>
-      </p>
+      </div>
       <p class="group-count">
         <i class="material-icons"><%= t "text.grade" %></i>
         <strong><%= question.vote_count %></strong>

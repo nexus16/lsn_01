@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.turbolinks
 //= require_tree .
 //= require materialize-sprockets
 //= require ckeditor/init
@@ -21,7 +22,7 @@ $(document).ready(function(){
   $('select').material_select('destroy');
 });
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
   $('.left-sitebar .list-class .class-item').on('click',function(){
     $('.left-sitebar .list-class .class-item').css('width', '33.3333333333%');
     $('.left-sitebar .list-class .class-item').find('.row').css('display', 'none');

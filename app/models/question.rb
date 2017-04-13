@@ -1,4 +1,6 @@
 class Question < ApplicationRecord
+  searchkick highlight: [:title, :content], suggest: [:title]
+
   belongs_to :category
   belongs_to :user
 
@@ -11,4 +13,14 @@ class Question < ApplicationRecord
   scope :hot_questions, ->{(order vote_count: :DESC).limit 5}
   scope :order_new_questions, ->{order created_at: :desc}
   scope :order_vote_questions, ->{order vote_count: :desc}
+
+  def search_data
+    as_json only: [:title, :content]
+    {
+      title: title,
+      content: content
+    }
+  end
 end
+
+Question.reindex
