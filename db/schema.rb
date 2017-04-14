@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20170405041015) do
     t.string   "picture"
     t.integer  "user_id"
     t.integer  "parent_id"
-    t.integer  "vote_count"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "vote_count",  default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(version: 20170405041015) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "vote_type"
+    t.index ["user_id", "votable_id", "votable_type"], name: "index_votes_on_user_id_and_votable_id_and_votable_type", unique: true
     t.index ["user_id"], name: "index_votes_on_user_id"
     t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
   end

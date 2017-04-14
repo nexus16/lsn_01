@@ -1,0 +1,11 @@
+$color-highlight: #ff0;
+
+.search-result {
+  em {
+    color: $color-highlight;
+  }
+}
+
+.suggestions {
+  margin: 30px;
+}

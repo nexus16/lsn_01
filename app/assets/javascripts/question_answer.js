@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
   if ($('textarea').length > 0) {
     var data = $('.ckeditor');
     $.each(data, function(i) {
@@ -7,7 +7,7 @@ $(document).ready(function(){
   }
 });
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
   $('.choose_class').on('change',function(e){
     e.preventDefault();
     var class_id = this.value;
@@ -26,14 +26,14 @@ $(document).ready(function(){
   });
 });
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
   $('.btn-add-answer').on('click',function(){
     $(this).css('display', 'none');
     $('.add-answer').css('display', 'block');
   });
 });
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
   $('.btn-add-comment').on('click', function(){
     var parent = $(this).closest('table').attr('id');
     $('#'+parent+' '+'.btn-add-comment').css('display', 'none');
