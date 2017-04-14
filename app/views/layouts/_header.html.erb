@@ -27,7 +27,11 @@
         </li>
         <ul id="dropdown1" class="dropdown-content">
           <li><%= link_to t("link.profile"), user_path(current_user) %></li>
-          <li><%= link_to t("link.sign_out"), destroy_user_session_path, method: :delete %></li>
+          <% if current_user.is_admin? %>
+            <li><%= link_to t("link.admin"), admin_reports_path %></li>
+          <% end %>
+          <li><%= link_to t("link.sign_out"), destroy_user_session_path,
+            method: :delete %></li>
         </ul>
       <% else %>
         <li>

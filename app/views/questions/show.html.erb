@@ -11,9 +11,11 @@
   <div class="container-question">
     <%= render @question %>
   </div>
-  <div>
-
-  </div>
+  <% if current_user && policy(Report).destroy? %>
+    <div class="container-manager-reports">
+      <%= render "list_reports", question: @question %>
+    </div>
+  <% end %>
   <div class="count-answer">
     <h5>
       <span><%= @supports_question.answers.count %></span>

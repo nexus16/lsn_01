@@ -11,9 +11,11 @@ Rails.application.routes.draw do
     devise_for :users, controllers: {registrations: "registrations"}
   end
   resources :users, only: :show
-  get "/admin", to: "admin#index"
+  namespace :admin do
+    resources :reports, only: :index
+  end
   resources :questions, only: :show
-  resources :reports, only: [:new, :create]
+  resources :reports, only: [:new, :create, :destroy]
   resources :votes, only: [:create, :destroy]
   resources :searches
   get "/category/:name", to: "categories#index"

@@ -1,0 +1,24 @@
+<h5><%= t "manager_reports" %></h5>
+<% if question.reports.any? %>
+  <table class="highlight bordered">
+    <tr>
+      <th><%= t "admin.content" %></th>
+      <th><%= t "admin.action" %></th>
+    </tr>
+    <% question.reports.order_new_reports.each do |report| %>
+    <tr>
+      <td class="col s10">
+        <%= report.content %>
+      </td>
+      <td>
+        <%= link_to report, method: :delete, title: t("admin.delete"),
+          data: {confirm: t("delete_confirm")}, remote: true do %>
+          <i class="material-icons">delete</i>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p><%= t "admin.no_report" %></p>
+<% end %>

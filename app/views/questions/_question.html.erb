@@ -23,6 +23,20 @@
         </div>
         <div class="secondary-content">
           <span><%= time_ago_in_words @question.created_at %></span>
+          &nbsp;
+          <% if current_user %>
+            <% if policy(question).update? %>
+              <%= link_to edit_question_path, title: t("admin.edit")  do %>
+                <i class="material-icons">edit</i>
+              <% end %>
+            <% end %>&nbsp;
+            <% if policy(question).destroy? %>
+              <%= link_to @question, method: :delete, title: t("admin.delete"),
+                data: {confirm: t("delete_confirm")} do %>
+                <i class="material-icons">delete</i>
+              <% end %>
+            <% end %>
+          <% end %>
         </div>
 
         <table class="question-footer">
