@@ -1,0 +1,25 @@
+<h4><%= t "reports_manager" %></h4>
+<div class="list-questions-reported">
+  <h5><%= t "admin.list_questions_being_reported" %></h5>
+</div>
+<ul class="collapsible popout list-reports" data-collapsible="accordion">
+  <% @questions.each do |question| %>
+    <li>
+      <div class="collapsible-header">
+        <%= question.title %>
+        <div class="content-question">
+          <%= link_to t("admin.go"), question_path(question), class: "chip" %>
+        </div>
+      </div>
+      <div class="collapsible-body">
+        <div class="content-reports">
+          <%= t "admin.title_content_reports" %>
+        </div>
+        <% question.reports.each do |report| %>
+          <span><%= report.content %></span><br>
+          <%= time_ago_in_words report.created_at %><hr>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ul>

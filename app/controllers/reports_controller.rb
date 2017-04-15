@@ -9,6 +9,21 @@ class ReportsController < ApplicationController
     redirect_to question_path params[:report][:question_id]
   end
 
+  def destroy
+    report = Report.find_by id: params[:id]
+    authorize report
+    if report
+      @question = report.question
+      report.destroy
+      respond_to do |format|
+        format.js
+      end
+    else
+      flash[:danger] = t "admin.delete_report_fails"
+      redirect_to :back
+    end
+  end
+
   private
   def report_params
     params.require(:report).permit :question_id, :content
