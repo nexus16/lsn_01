@@ -3,7 +3,7 @@ class Supports::Home
   end
 
   def list_question
-    Question.all
+    Question.order_DESC
   end
 
   def hot_question

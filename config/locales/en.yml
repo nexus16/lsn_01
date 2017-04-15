@@ -143,3 +143,5 @@ en:
     notifications: "user not permit action"
   Search_suggestions: "Search suggestions: "
   avatar: "avatar"
+  no_tag: "No tag available"
+  tag: "Tags"

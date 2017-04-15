@@ -49,7 +49,7 @@ class QuestionsController < ApplicationController
 
   private
   def question_params
-    params.require(:question).permit :title, :content, :category_id
+    params.require(:question).permit :title, :content, :category_id, :tag_list
   end
 
   def find_question
