@@ -1,4 +1,4 @@
-<% if !user_signed_in? %>
+<% if !user_signed_in? || (current_user == votable.user) %>
   <div class="vote-up">
     <%= link_to "#noti-unvote" do %>
       <input type="submit" value="keyboard_arrow_up"
@@ -67,8 +67,12 @@
 <% end %>
 <div id="noti-unvote" class="modal noti-unvote">
   <div class="modal-content">
-    <h5><%= t "thanks_for_feedback" %></h5>
-    <h6><%= t "content_unvote" %></h6>
-    <%= link_to t("log_in"), new_user_session_path %>
+    <% if user_signed_in? %>
+      <h5><%= t "not_allow_vote" %></h5>
+    <% else %>
+      <h5><%= t "thanks_for_feedback" %></h5>
+      <h6><%= t "content_unvote" %></h6>
+      <%= link_to t("log_in"), new_user_session_path %>
+    <% end %>
   </div>
 </div>

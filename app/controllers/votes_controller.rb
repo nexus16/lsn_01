@@ -6,6 +6,11 @@ class VotesController < ApplicationController
       votable = vote.votable
       votable.update_attributes vote_count:
         (votable.vote_count + Vote.vote_types[vote.vote_type])
+      if votable.is_a? Answer
+        user = votable.user
+        user.update_attributes vote_count:
+          (user.vote_count + Vote.vote_types[vote.vote_type])
+      end
       init_vote_js
       respond_to do |format|
         format.html{redirect_to :back}
@@ -24,6 +29,11 @@ class VotesController < ApplicationController
     votable = vote.votable
     votable.update_attributes vote_count:
       (votable.vote_count - Vote.vote_types[vote.vote_type])
+    if votable.is_a? Answer
+      user = votable.user
+      user.update_attributes vote_count:
+        (user.vote_count - Vote.vote_types[vote.vote_type])
+    end
     vote.destroy
     init_vote_js
     respond_to do |format|

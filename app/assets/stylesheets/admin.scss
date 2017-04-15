@@ -1,7 +1,8 @@
 $teal: #009688;
 $background-admin: #e3f2fd;
+$white: #fff;
 
-.admin-button-collapse {
+.admin-title {
   font-size: 30px;
 }
 
@@ -17,7 +18,7 @@ $background-admin: #e3f2fd;
   }
 }
 
-.list-questions-reported {
+.manager-title {
   color: $teal;
   margin-bottom: 15px;
 }
@@ -28,4 +29,8 @@ $background-admin: #e3f2fd;
 
 .container-manager-reports {
   margin-bottom: 30px;
+}
+
+.list-users {
+  background-color: $white;
 }
