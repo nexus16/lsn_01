@@ -69,6 +69,21 @@ $black: #000;
 
 }
 
+.header {
+  .avatar {
+    .dropdown-button {
+      height: 64px;
+
+      img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        margin-top: 7px;
+      }
+    }
+  }
+}
+
 .right-sitebar {
   .hot-user,
   .hot-question {

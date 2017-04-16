@@ -1,11 +1,17 @@
 class TagsController < ApplicationController
   def index
-    @tags = Tag.search params[:term]
-    render json: @tags.map{|tag| tag.name}
+    if params[:term]
+      @tags = Tag.search params[:term]
+      render json: @tags.map{|tag| tag.name}
+    else
+      tag = Tag.list_tag params[:name]
+      list_tag = tag.map{|t| t.name}
+      @questions = Question.tagged_with list_tag
+    end
   end
 
   def show
-    tag = Tag.find_by name: params[:id]
+    tag = Tag.find_by id: params[:id]
     if tag
       @questions = Question.tagged_with tag.name
     else
