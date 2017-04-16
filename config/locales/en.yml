@@ -51,6 +51,7 @@ en:
     Choose_class: "Choose class"
     create: "create"
     clear: "clear"
+    build: "build"
   link:
     sign_out: "Sign out"
     profile: "profile"
@@ -120,6 +121,10 @@ en:
   close: "close"
   question_not_found: "question not found"
   answer_not_found: "answer not found"
+  category_not_found: "Category not found"
+  not_found: "Not found"
+  create_success: "create success"
+  create_false: "create false"
   update_success: "update success"
   update_false: "update false"
   delete_success: "delete success"
@@ -149,6 +154,7 @@ en:
   admin:
     report_manager: "Reports Manager"
     questions_manager: "Questions Manager"
+    categories_manager: "Categores Manager"
     go: "Go"
     title_content_reports: "Content reports"
     list_questions_being_reported: "List of questions has been reported"
@@ -161,3 +167,7 @@ en:
     action: "Action"
     delete: "delete"
     edit: "edit"
+    create_new_class: "Create new class"
+    add_subject: "Add subject"
+    class: "Class"
+

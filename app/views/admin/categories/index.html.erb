@@ -1,0 +1,64 @@
+<a class="waves-effect waves-light btn" href="#modal1">
+  <%= t "admin.create_new_class" %>
+</a>
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <%= form_for @support_category_admin.category_class,
+      url: admin_categories_path  do |f| %>
+      <%= f.label t("admin.class") %>
+      <%= f.text_field :name %>
+      <%= f.hidden_field :parent_id %>
+      <%= f.submit t("admin.create_new_class") %>
+    <% end %>
+  </div>
+</div>
+<ul class="collapsible category-admin" data-collapsible="accordion">
+  <% @support_category_admin.classes.each do |class_item| %>
+
+    <li class="class-item class-item-<%= class_item.id %>" >
+      <div class="collapsible-header row" >
+        <div class="col s4"><%= class_item.name %></div>
+        <div class="col s4">
+          <%= class_item.count_question_by_class %> question
+        </div>
+        <div class="col s2 offset-s2 right-align action-display">
+          <%= link_to "#modal2" do %>
+            <i class="material-icons edit-category"><%= t "text.build" %></i>
+          <% end %>
+          <%= link_to admin_category_path(class_item), method: :delete,
+            data: {confirm: t("delete_confirm")} do %>
+            <i class="material-icons"><%= t "text.clear" %></i>
+          <% end %>
+        </div>
+      </div>
+      <div class="collapsible-body row">
+        <div>
+          <%= form_for @support_category_admin.category_subject,
+            url: admin_categories_path  do |f| %>
+            <%= f.label "Class" %>
+            <%= f.text_field :name %>
+            <%= f.hidden_field :parent_id, value: class_item.id%>
+            <%= f.submit t("admin.add_subject") %>
+          <% end %>
+        </div>
+        <ul class="collection">
+          <% class_item.descendants.each do |subject| %>
+            <li class="collection-item row">
+              <span class="left-align col s4"><%= subject.name %></span>
+              <span class="center-align col s4">
+                <%= subject.questions.count %> question
+              </span>
+              <span class="right-align col s4 action-display">
+                <i class="material-icons"><%= t "text.build" %></i>
+                <%= link_to admin_category_path(subject), method: :delete,
+                  data: {confirm: t("delete_confirm")} do %>
+                  <i class="material-icons"><%= t "text.clear" %></i>
+                <% end %>
+              </span>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </li>
+  <% end %>
+</ul>
