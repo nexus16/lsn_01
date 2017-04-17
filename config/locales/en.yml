@@ -145,6 +145,7 @@ en:
   no_tag: "No tag available"
   tag: "Tags"
   delete_confirm: "You sure?"
+  popular_tag: "Popular tag"
   admin:
     report_manager: "Reports Manager"
     questions_manager: "Questions Manager"

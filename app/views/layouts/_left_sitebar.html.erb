@@ -32,3 +32,13 @@
     </div>
   <% end %>
 </div>
+<div class="card-panel teal lighten-2 margin-5">
+  <%= t "popular_tag" %>
+</div>
+<div class="list-tag">
+  <% @supports.popular_tag.each do |tag| %>
+    <%= link_to tag_path(tag) do %>
+      <span class="chip"><%= tag %></span>
+    <% end %>
+  <% end %>
+</div>

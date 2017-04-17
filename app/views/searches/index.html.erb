@@ -17,7 +17,7 @@
     <% @questions.each do |question| %>
       <div class="card">
         <h4><%= link_to question.title, question %></h4>
-        <q><%= question.content %></q>
+        <p><%= question.content.html_safe %></p>
       </div>
     <% end %>
   <% end %>

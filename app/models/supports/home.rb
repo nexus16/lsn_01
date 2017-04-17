@@ -21,4 +21,8 @@ class Supports::Home
   def hot_user
     User.hot_user
   end
+
+  def popular_tag
+    ActsAsTaggableOn::Tag.most_used 10
+  end
 end

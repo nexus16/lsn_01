@@ -6,8 +6,12 @@
     <% @supports.hot_user.each do |user| %>
       <li class="collection-item avatar">
         <%= link_to user_path user do %>
-          <img src="https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_
-            960_720.png" alt="" class="circle">
+          <% if user.avatar? %>
+            <%= image_tag question.user.avatar.url, class: "circle" %>
+          <% else %>
+            <img src="https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-160691
+              6_960_720.png" alt="avatar" class="circle">
+          <% end %>
         <% end %>
         <span class="title"><%= link_to user.username, user_path(user) %> </span>
         <p class="group-count">
@@ -25,10 +29,9 @@
   <ul class="collection margin-0">
     <% @supports.hot_question.each do |question| %>
       <li class="collection-item">
-        <p><%= question.content %></p>
-        <p><%= link_to question.user.username, user_path(question.user) %></p>
+        <p><%= link_to question.title, question_path(question) %></p>
         <p class="group-count">
-          <i class="material-icons"><%= t "text.thumb_up" %></i>
+          <i class="material-icons"><%= t "text.grade" %></i>
           <strong><%= question.vote_count %></strong>
         </p>
       </li>

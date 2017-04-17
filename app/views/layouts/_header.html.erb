@@ -22,7 +22,12 @@
       <% if current_user %>
         <li class="avatar">
           <a class="dropdown-button" href="#" data-activates="dropdown1">
-            <%= current_user.username %>
+            <% if current_user.avatar? %>
+              <%= image_tag current_user.avatar.url %>
+            <% else %>
+              <img src="https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-16
+                06916_960_720.png" alt="avatar" class="circle">
+            <% end %>
           </a>
         </li>
         <ul id="dropdown1" class="dropdown-content">

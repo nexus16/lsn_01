@@ -80,8 +80,6 @@ $blue-light: #29b6f6;
 }
 
 .container-comments {
-  padding-left: 60px;
-
   .vote {
     font-size: 22px;
 
@@ -98,4 +96,14 @@ $blue-light: #29b6f6;
 .noti-unvote {
   height: 30%;
   width: 30%;
+}
+
+.list-tag {
+  margin-top: 10px;
+}
+
+.topic-title {
+  h4 {
+    padding-left: 65px;
+  }
 }

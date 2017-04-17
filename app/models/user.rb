@@ -11,7 +11,7 @@ class User < ApplicationRecord
     source_type: Question.name
   has_many :answers_voted, through: :votes, source: :votable,
     source_type: Answer.name
-
+  mount_uploader :avatar, PictureUploader
   scope :hot_user, ->{(order vote_count: :DESC).limit 5}
 
   def reporting? question

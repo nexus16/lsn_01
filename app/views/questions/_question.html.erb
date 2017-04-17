@@ -18,7 +18,7 @@
         </span>
         <div class="content_question">
           <p>
-            <%= raw @question.content %>
+            <%= @question.content.html_safe %>
           </p>
         </div>
         <div class="secondary-content">

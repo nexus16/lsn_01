@@ -20,9 +20,9 @@
           <h4><%= link_to question.title, question %></h4>
         <% end %>
         <% if details[:highlight][:content] %>
-          <q><%= simple_format details[:highlight][:content] %></q>
+          <p><%= simple_format details[:highlight][:content] %></p>
         <% else %>
-          <q><%= question.content %></q>
+          <p><%= question.content.html_safe %></p>
         <% end %>
         <span class="chip">
           <%= link_to question.category, class: "text-black" do %>
