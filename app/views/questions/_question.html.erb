@@ -7,7 +7,12 @@
     <td class="collection">
       <div class="collection-item avatar">
         <%= link_to user_path @question.user do %>
-          <%= image_tag "yuna.jpg", class: "circle" %>
+          <% if @question.user.avatar? %>
+            <%= image_tag @question.user.avatar.url, class: "circle" %>
+          <% else %>
+          <%= image_tag "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1
+            606916_960_720.png", alt: t("avatar"), class: "circle" %>
+          <% end %>
         <% end %>
         <%= link_to user_path @question.user do %>
           <span class="title"><%= @question.user.username %></span><br>
@@ -41,10 +46,10 @@
 
         <table class="question-footer">
           <tr>
-            <td class="btn-add-answer">
-              <span><%= t "button.add_answer" %></span>
-            </td>
             <% if current_user %>
+              <td class="btn-add-answer">
+                <span><%= t "button.add_answer" %></span>
+              </td>
               <td class="add-answer">
                 <%= form_for [@question, @supports_question.new_answer],
                   remote: true do |f| %>
@@ -52,6 +57,11 @@
                   <%= f.text_area :content %>
                   <%= f.submit "submit" %>
                 <% end %>
+              </td>
+            <% else %>
+              <td>
+                <%= link_to t("log_in_to_answer"), new_user_session_path,
+                  method: :get %>
               </td>
             <% end %>
             <td id="flag-report">

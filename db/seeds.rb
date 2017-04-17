@@ -6,18 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(username: "ddtran", email: "dd@gmail.com", password: "123456",
+User.create!(username: "admin", email: "admin@gmail.com", password: "123456",
   password_confirmation: "123456", is_admin: true)
 
-99.times do |n|
+10.times do |n|
   name = Faker::Name.name
   email = "a#{n+1}@a.a"
   password = "123456"
-  votes = Faker::Number.between(1, 99)
   User.create!(username: name,
   email: email,
   password: password,
-  vote_count: votes)
+  vote_count: 0)
 end
 
 5.times do |n|
@@ -37,26 +36,3 @@ end
   end
 end
 
-99.times do |n|
-  title = Faker::Lorem.sentences(1)
-  content = Faker::Lorem.sentences(5)
-  user = Faker::Number.between(1, 99)
-  votes = Faker::Number.between(1, 99)
-  category_id = Faker::Number.between(6, 25)
-  Question.create!(
-  title: title,
-  content: content,
-  category_id: category_id,
-  user_id: user,
-  vote_count: votes
-  )
-end
-
-10.times do
-  question = Question.find_by id: 1
-  content = Faker::Lorem.sentence(5)
-  vote_count = Faker::Number.between(0,10)
-  user_id = Faker::Number.between(1,10)
-  question.answers.create(content: content,
-    vote_count: vote_count, user_id: user_id)
-end

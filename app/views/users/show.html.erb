@@ -10,8 +10,6 @@
       <li class="tab user disabled">
         <%= link_to "#" do %>
           <%= @user.username %>
-          <%= image_tag "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-
-            1606916_960_720.png", class: "circle" %>
         <% end %>
       </li>
     </ul>
@@ -21,8 +19,12 @@
 <div id="profile" class="col s12 profile">
   <div class="collection">
     <div class="collection-item">
-      <%= image_tag "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-
-        1606916_960_720.png", class: "avatar" %>
+      <% if @user.avatar? %>
+        <%= image_tag @user.avatar.url, class: "avatar" %>
+      <% else %>
+        <%= image_tag "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-160
+          6916_960_720.png", class: "avatar" %>
+      <% end %>
       <div class="content-profile">
         <span class="title"><%= @user.username %></span><br>
         <span><%= t "fake.point" %></span>
@@ -53,9 +55,6 @@
   </div>
 </div>
 <div id="activity" class="col s12 activity">
-  <div class="statistic_graphic">
-    <%= image_tag "graphic.png" %>
-  </div>
   <div class="questions-manager">
     <%= render "questions_manager" %>
   </div>
