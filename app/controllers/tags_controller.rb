@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
   def index
     if params[:term]
-      @tags = Tag.search params[:term]
+      @tags = Tag.search_tag params[:term]
       render json: @tags.map{|tag| tag.name}
     else
       tag = Tag.list_tag params[:name]

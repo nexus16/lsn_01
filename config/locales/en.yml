@@ -140,7 +140,11 @@ en:
   vote_failed: "Vote failed"
   pundit:
     notifications: "user not permit action"
-  Search_suggestions: "Search suggestions: "
+  Search_suggestions: "Search suggestions question: "
+  Search_suggestions_tag: "Search suggestions tag: "
+  search_tag_title: "Search Tag"
+  search_question_title: "Search Question"
+  search_not_found: "No results for your query"
   avatar: "avatar"
   no_tag: "No tag available"
   tag: "Tags"

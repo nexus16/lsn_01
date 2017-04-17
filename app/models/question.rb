@@ -1,5 +1,6 @@
 class Question < ApplicationRecord
-  searchkick highlight: [:title, :content], suggest: [:title]
+  searchkick highlight: [:title, :content], suggest: [:title, :content],
+    word_start: [:title, :content]
 
   belongs_to :category
   belongs_to :user

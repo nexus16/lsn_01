@@ -1,24 +1,58 @@
-<div class="suggestions">
-  <% if @questions.suggestions.present? %>
-    <h5>
-      <%= t "Search_suggestions" %>
-      <%= link_to @questions.suggestions.first,
-        searches_path(query: @questions.suggestions.first) %>
-    </h5>
+<div class="search-tag-result">
+  <h4><%= t "search_tag_title" %></h4>
+  <% if @tags.empty? %>
+    <div class="card">
+      <label class="search-not-found"><%= t "search_not_found" %></label>
+    </div>
+  <% else %>
+    <% if @tags.suggestions.present? %>
+      <h5>
+        <%= t "Search_suggestions_tag" %>
+        <% @tags.suggestions.each do |suggest| %>
+          <%= link_to suggest, searches_path(query: suggest) %>
+        <% end %>
+      </h5>
+    <% end %>
+    <div class="card result-tag-search">
+      <% if @tags.try(:with_details).present? %>
+        <% @tags.with_details.each do |tag, details| %>
+          <%= link_to tag_path(tag) do %>
+            <span class="chip"><%= tag.name %></span>
+          <% end %>
+        <% end %>
+      <% else %>
+      <% end %>
+    </div>
   <% end %>
 </div>
-<div class="search-result">
-  <% if @questions.try(:with_details).present? %>
-    <% @questions.with_details.each do |question, details| %>
-      <%= render "result", question: question, details: details %>
-    <% end %>
-    <%= will_paginate @questions %>
+<div class="search-question-result">
+  <h4><%= t "search_question_title" %></h4>
+  <% if @questions.empty? %>
+    <div class="card">
+      <label class="search-not-found"><%= t "search_not_found" %></label>
+    </div>
   <% else %>
-    <% @questions.each do |question| %>
-      <div class="card">
-        <h4><%= link_to question.title, question %></h4>
-        <p><%= question.content.html_safe %></p>
-      </div>
-    <% end %>
+    <div class="suggestions">
+      <% if @questions.suggestions.present? %>
+        <h5>
+          <%= t "Search_suggestions" %>
+          <% @questions.suggestions.each do |suggest| %>
+          <%= link_to suggest, searches_path(query: suggest) %>
+          <% end %>
+        </h5>
+      <% end %>
+    </div>
+    <div class="search-result">
+      <% if @questions.try(:with_details).present? %>
+        <% @questions.with_details.each do |question, details| %>
+          <%= render "result", question: question, details: details %>
+        <% end %>
+        <%= will_paginate @questions %>
+      <% else %>
+        <div class="card">
+          <label class="search-not-found"><%= t "search_not_found" %></label>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
