@@ -43,7 +43,16 @@
     <div class="divider"></div>
   </li>
   <li>
-    <%= link_to destroy_user_session_path, method: "delete", class: "waves-effect" do %>
+    <%= link_to admin_categories_path, class: "waves-effect" do %>
+      <i class="material-icons">message</i>
+      <%= t "admin.categories_manager" %>
+    <% end %>
+  </li>
+  <li>
+    <div class="divider"></div>
+  </li>
+  <li>
+    <%= link_to destroy_user_session_path, method: :delete, class: "waves-effect" do %>
       <i class="material-icons">power_settings_new</i>
       <%= t "admin.log_out" %>
     <% end %>

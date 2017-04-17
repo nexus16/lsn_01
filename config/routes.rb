@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :users, only: :show
   namespace :admin do
     resources :reports, only: :index
+    resources :categories, except: :show
   end
   resources :questions, only: :show
   resources :reports, only: [:new, :create, :destroy]

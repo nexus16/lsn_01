@@ -1,0 +1,16 @@
+.category-admin {
+  .collapsible-header,
+  .collapsible-body {
+    .action-display {
+      display: none;
+    }
+  }
+
+  .collapsible-header:hover,
+  .collapsible-body:hover {
+    .action-display {
+      display: block;
+    }
+  }
+
+}
