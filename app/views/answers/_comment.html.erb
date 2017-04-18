@@ -2,7 +2,12 @@
   <tr>
     <td class="collection">
       <div class="collection-item avatar">
-        <%= image_tag "yuna.jpg", class: "circle" %>
+        <% if comment.user.avatar? %>
+          <%= image_tag comment.user.avatar.url, class: "circle" %>
+        <% else %>
+          <%= image_tag "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1
+            606916_960_720.png", alt: t("avatar"), class: "circle" %>
+        <% end %>
         <span class="title"><%= comment.user.username %></span><br>
         <span><%= t "fake.point" %></span>
         <span class="medal">

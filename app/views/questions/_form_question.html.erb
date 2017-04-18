@@ -1,13 +1,35 @@
 <%= form_for @question, html: {class: "form-new-question"} do |f| %>
-  <%= f.select :category_id, [], {}, {class: "display_object"} %>
-  <%= f.label :title %>
-  <%= f.text_area :title %>
-  <%= f.label :tag_list, t("tag") %>
-  <%= f.hidden_field :tag_list, class: "tag-list"%>
-  <div class="tag-list"></div>
-  <input type="text" name="name" class="tag-autocomplete-search">
-  <div class="result"></div>
-  <%= f.label :content %>
-  <%= f.cktext_area :content %>
+  <div class="row">
+    <div class="col s12">
+      <label><%= t "text.Choose_class" %></label>
+      <select class="choose_class" required="true">
+        <option value=""></option>
+        <%= @supports.list_class.each do |class_item| %>
+          <option value="<%= class_item.id %>"><%= class_item.name %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="col s12">
+      <%= f.label :title, t("text.choose_subject") %>
+      <%= f.select :category_id, [], {}, {class: "display_object", required: true} %>
+    </div>
+    <div class="col s12">
+      <%= f.label :title %>
+      <%= f.text_area :title, required: true %>
+    </div>
+    <div class="col s12">
+      <%= f.label :tag_list, t("tag") %>
+      <%= f.hidden_field :tag_list, class: "tag-list"%>
+    </div>
+    <div class="tag-list col s12"></div>
+    <div class="col s12">
+      <input type="text" name="name" class="tag-autocomplete-search">
+    </div>
+    <div class="result col s12"></div>
+    <div class="col s12">
+      <%= f.label :content %>
+      <%= f.cktext_area :content, required: true %>
+    </div>
+  </div>
   <%= f.submit :submit, class: "btn btn-primary" %>
 <% end %>

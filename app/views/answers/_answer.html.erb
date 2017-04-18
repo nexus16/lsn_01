@@ -5,7 +5,12 @@
     </td>
     <td class="collection">
       <div class="collection-item avatar">
-        <%= image_tag "yuna.jpg", class: "circle" %>
+        <% if answer.user.avatar? %>
+          <%= image_tag answer.user.avatar.url, class: "circle" %>
+        <% else %>
+          <%= image_tag "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1
+            606916_960_720.png", alt: t("avatar"), class: "circle" %>
+        <% end %>
         <span class="title"><%= answer.user.username %></span><br>
         <span><%= t "fake.point" %></span>
         <span class="medal">
@@ -15,9 +20,14 @@
           <p>
             <%= answer.content %>
           </p>
-          <div class="btn-add-comment">
-            <span><%= t "button.add_comment" %></span>
-          </div>
+          <% if current_user %>
+            <div class="btn-add-comment">
+              <span><%= t "button.add_comment" %></span>
+            </div>
+          <% else %>
+              <%= link_to t("log_in_to_comment"), new_user_session_path,
+                method: :get %>
+          <% end %>
           <% if current_user %>
             <div class="add-comment">
               <%= form_for [@question, @supports_question.new_answer],

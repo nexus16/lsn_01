@@ -28,7 +28,7 @@ en:
   report: "Report"
   answer_count: "Answer"
   button:
-    create_question: "create question"
+    create_question: "Create question"
     create_answer: "create answer"
     find_by_class: "find by class"
     find_by_object: "find by object"
@@ -41,7 +41,7 @@ en:
     add_comment: "Add a comment..."
   text:
     footer: "© 2017 Framgia-team-training"
-    logo: "logo"
+    logo: "Hoc.vn"
     reply: "reply"
     grade: "grade"
     visibility: "visibility"
@@ -49,6 +49,7 @@ en:
     search: "search"
     close: "close"
     Choose_class: "Choose class"
+    choose_subject: "Choose subject"
     create: "create"
     clear: "clear"
     build: "build"
@@ -155,6 +156,8 @@ en:
   tag: "Tags"
   delete_confirm: "You sure?"
   popular_tag: "Popular tag"
+  log_in_to_answer: "Login to answer"
+  log_in_to_comment: "Login to comment"
   admin:
     report_manager: "Reports Manager"
     questions_manager: "Questions Manager"
@@ -174,4 +177,4 @@ en:
     create_new_class: "Create new class"
     add_subject: "Add subject"
     class: "Class"
-
+  search_question: "Search question..."
