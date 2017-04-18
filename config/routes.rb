@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :reports, only: :index
     resources :categories, except: :show
+    resources :users, only: :index
   end
   resources :questions, only: :show
   resources :reports, only: [:new, :create, :destroy]

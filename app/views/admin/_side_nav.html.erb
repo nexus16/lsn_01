@@ -34,6 +34,15 @@
     <div class="divider"></div>
   </li>
   <li>
+    <%= link_to admin_users_path, class: "waves-effect" do %>
+      <i class="material-icons">people</i>
+      <%= t "admin.users_manager" %>
+    <% end %>
+  </li>
+  <li>
+    <div class="divider"></div>
+  </li>
+  <li>
     <%= link_to "#", class: "waves-effect" do %>
       <i class="material-icons">message</i>
       <%= t "admin.questions_manager" %>
@@ -58,8 +67,6 @@
     <% end %>
   </li>
 </ul>
-<%= link_to "#", data: {activates: "slide-out"},
-  class: "admin-button-collapse" do %>
-  <i class="material-icons">menu</i>
+<%= link_to "#", class: "admin-title" do %>
   <%= t "administrator" %>
 <% end %>

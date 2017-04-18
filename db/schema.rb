@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20170417012327) do
     t.string   "picture"
     t.integer  "user_id"
     t.integer  "parent_id"
-    t.integer  "vote_count"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "vote_count",  default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
@@ -137,7 +137,7 @@ ActiveRecord::Schema.define(version: 20170417012327) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "vote_count"
+    t.integer  "vote_count",             default: 0
     t.string   "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

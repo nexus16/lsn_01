@@ -13,6 +13,7 @@ class User < ApplicationRecord
     source_type: Answer.name
   mount_uploader :avatar, PictureUploader
   scope :hot_user, ->{(order vote_count: :DESC).limit 5}
+  scope :order_most_voted, ->{order vote_count: :desc}
 
   def reporting? question
     reporting.include? question

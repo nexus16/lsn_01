@@ -1,0 +1,9 @@
+<table class="highlight bordered list-users">
+  <tr>
+    <th><%= t "admin.name_header" %></th>
+    <th><%= t "admin.reputation_header" %></th>
+    <th><%= t "admin.action_header" %></th>
+  </tr>
+  <%= render @users %>
+</table>
+<%= will_paginate @users %>

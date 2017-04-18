@@ -1,18 +1,16 @@
 <div class="card-panel teal lighten-2 margin-5">
   <%= t "button.find_by_class" %>
 </div>
-<div class="row list-class" >
+<div class="list-subject">
   <% @supports.list_class.each do |c| %>
-    <div class="col m4 class-item">
+    <div>
       <div class="card">
         <div class="card-panel blue"><%= c.name %></div>
-        <div class="row">
+        <div class="collection">
           <% c.descendants.each do |descendant| %>
-            <div class="col m4 ">
-              <div class="card-panel grey">
-                <%= link_to descendant.name, descendant, class: "text-white" %>
-              </div>
-            </div>
+            <%= link_to descendant, class: "text-white collection-item" do %>
+              <%= descendant.name %>
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -24,12 +22,8 @@
 </div>
 <div class="row list-class">
   <% @supports.list_object.each do |object| %>
-    <div class="col m4">
-      <div class="card-panel blue text-white">
-        <%= link_to object ,categories_path(object: object),
-          class: "text-white" %>
-      </div>
-    </div>
+    <%= link_to object, categories_path(object: object),
+      class: "col m4 text-white blue btn" %>
   <% end %>
 </div>
 <div class="card-panel teal lighten-2 margin-5">
