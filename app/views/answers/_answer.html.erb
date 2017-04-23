@@ -1,56 +1,58 @@
-<table id="answer_<%= answer.id %>">
-  <tr>
-    <td id="vote-form-answer-<%= answer.id %>" class="vote">
-      <%= render "votes/vote", votable: answer, vote: vote %>
-    </td>
-    <td class="collection">
-      <div class="collection-item avatar">
+<article id="answer-<%= answer.id %>" class="answer-item">
+  <div class="row">
+    <div class="col s1 avatar">
+      <%= link_to user_path answer.user do %>
         <% if answer.user.avatar? %>
           <%= image_tag answer.user.avatar.url, class: "circle" %>
         <% else %>
           <%= image_tag "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1
             606916_960_720.png", alt: t("avatar"), class: "circle" %>
         <% end %>
-        <span class="title"><%= answer.user.username %></span><br>
-        <span><%= t "fake.point" %></span>
-        <span class="medal">
-          <%= image_tag "gold-medal.png", alt: "medal" %>
+      <% end %>
+    </div>
+    <div class="col s11 padding-left-20">
+      <p class="margin-top-0">
+        <%= link_to answer.user.username, user_path(answer.user) %>
+        <span class="right secondary-content">
+          <%= time_ago_in_words answer.created_at %>
         </span>
-        <div class="content_answer">
-          <p>
-            <%= answer.content %>
-          </p>
-          <% if current_user %>
-            <div class="btn-add-comment">
-              <span><%= t "button.add_comment" %></span>
-            </div>
-          <% else %>
-              <%= link_to t("log_in_to_comment"), new_user_session_path,
-                method: :get %>
-          <% end %>
-          <% if current_user %>
-            <div class="add-comment">
-              <%= form_for [@question, @supports_question.new_answer],
-                remote: true do |f| %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.hidden_field :parent_id, value: answer.id %>
-                <%= f.text_area :content %>
-                <%= f.submit "submit" %>
-              <% end %>
-            </div>
-          <% end %>
-          <div class="container-comments">
-            <% if answer.children.count > 0 %>
-              <% answer.children.each do |comment| %>
-                <%= render "answers/comment", comment: comment %>
-              <% end %>
-            <% end %>
-          </div>
+      </p>
+      <h5>
+        <%= answer.content %>
+      </h5>
+      <% if current_user %>
+        <div class="btn-add-comment">
+          <span><%= t "button.add_comment" %></span>
+          <strong class="space"></strong>
+          <span class="buton-vote"><%= t "plus" %></span>
+          <strong class="space"></strong>
+          <span class="buton-vote"><%= t "minus" %></span>
+          <strong class="space"></strong>
+          <i class="material-icons"><%= t "text.grade" %></i>
         </div>
-        <div class="secondary-content">
-          <span><%= time_ago_in_words answer.created_at %></span>
+      <% else %>
+        <%= link_to t("log_in_to_comment"), new_user_session_path,
+          method: :get %>
+      <% end %>
+      <% if current_user %>
+        <div class="add-comment">
+          <%= form_for [@question, @supports_question.new_answer],
+            remote: true do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :parent_id, value: answer.id %>
+            <%= f.text_area :content %>
+            <%= f.submit "submit" %>
+          <% end %>
         </div>
+      <% end %>
+      <div class="container-comments">
+        <% if answer.children.count > 0 %>
+          <% answer.children.each do |comment| %>
+            <%= render "answers/comment", comment: comment %>
+          <% end %>
+        <% end %>
       </div>
-    </td>
-  </tr>
-</table>
+    </div>
+  </div>
+  <div class="divide"></div>
+</article>

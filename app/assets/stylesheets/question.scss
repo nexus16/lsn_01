@@ -1,4 +1,8 @@
 $blue: #039be5;
+$orange: #ff7361;
+$white: #fff;
+$cl-border: #dedede;
+$cl-division: #e0e0e0;
 
 .btn-add-answer {
   color: $blue;
@@ -25,4 +29,52 @@ $blue: #039be5;
 
 .choose-class {
   display: block;
+}
+
+.single-question {
+  background: $white;
+  border: 1px solid $cl-border;
+  box-shadow: 0 0 5px $cl-border;
+  margin-top: 10px;
+  padding: 0 20px;
+
+  h2 {
+    padding-right: 40px;
+    position: relative;
+  }
+
+  .btn-report {
+    font-size: 16px;
+    position: absolute;
+    right: 0;
+
+    strong {
+      background: $orange;
+      padding: 6px;
+    }
+
+    i {
+      font-size: 15px;
+    }
+  }
+
+  .question-action {
+    bottom: 4px;
+    position: absolute;
+    right: 90px;
+  }
+}
+
+.container-comments .collection {
+  border: 0;
+  border-top: 1px solid $cl-division;
+}
+
+.btn-add-answer,
+.buton-vote,
+.btn-add-comment span:nth-child(1) {
+  background-color: $orange;
+  color: $white;
+  font-size: 14px;
+  padding: 7px 15px;
 }

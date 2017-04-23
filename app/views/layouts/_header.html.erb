@@ -1,48 +1,75 @@
-<nav class="header">
-  <div class="nav-wrapper row">
-    <div class="col m2">
-      <%= link_to t("text.logo"),root_path, class: "brand-logo" %>
-    </div>
-    <div class="col m6 nav-wrapper">
-      <%= form_tag searches_path, method: :get do %>
-        <div class="input-field">
-          <%= search_field_tag :query, params[:query] %>
-          <label class="label-icon" for="search">
-            <i class="material-icons"><%= t "search" %></i>
-          </label>
-          <i class="material-icons"><%= t "close" %></i>
-        </div>
+<header class="header">
+  <section class="container clearfix">
+    <div class="logo">
+      <%= link_to root_path do %>
+        <img src="http://2code.info/demo/themes/ask-me/wp-content/themes/ask-me/
+          images/logo.png">
       <% end %>
     </div>
-    <ul class="right hide-on-med-and-down col m4">
-      <% if current_user %>
-        <li class="avatar right">
-          <a class="dropdown-button" href="#" data-activates="dropdown1">
+    <div class="navigation">
+      <ul class="menu-header">
+        <li class="menu-item">
+          <%= link_to t("admin.home"), root_path %>
+        </li>
+        <li class="menu-item">
+          <%= link_to t("button.create_question"), new_question_path %>
+        </li>
+        <li class="menu-item" >
+          <a href="#"><%= t "class" %></a>
+          <ul class="sub-menu">
+            <% @supports.list_class.each do |c| %>
+              <li class="item-sub-menu">
+                <a href="#"><%= c.name %></a>
+                <ul class="sub-menu-2">
+                  <% c.descendants.each do |descendant| %>
+                    <li class="item-sub-menu-2">
+                      <%= link_to descendant do %>
+                        <%= descendant.name %>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+        <li class="menu-item" >
+          <a href="#"><%= t "subject" %></a>
+          <ul class="sub-menu">
+            <% @supports.list_object.each do |object| %>
+              <li class="item-sub-menu">
+                <%= link_to object, categories_path(object: object) %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+        <li class="notification menu-item">
+          <i class="material-icons">notifications</i>
+          <span><%= t "fake.point" %></span>
+        </li>
+        <% if current_user %>
+          <li class="menu-item">
             <% if current_user.avatar? %>
-              <%= image_tag current_user.avatar.url %>
+              <%= image_tag current_user.avatar.url, class: "avatar" %>
             <% else %>
               <img src="https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-16
-                06916_960_720.png" alt="avatar" class="circle">
+                06916_960_720.png" alt="avatar" class="circle avatar">
             <% end %>
-          </a>
-        </li>
-        <ul id="dropdown1" class="dropdown-content">
-          <li><%= link_to t("link.profile"), user_path(current_user) %></li>
-          <% if current_user.is_admin? %>
-            <li><%= link_to t("link.admin"), admin_reports_path %></li>
-          <% end %>
-          <li><%= link_to t("link.sign_out"), destroy_user_session_path,
-            method: :delete %></li>
-        </ul>
-      <% else %>
-        <li class="right">
-          <%= link_to t("link.login"), new_user_session_path, method: :get %>
-        </li>
-      <% end %>
-      <li class="right">
-        <%= link_to t("button.create_question"),new_question_path, class: "waves-effect
-          waves-light btn create_question" %>
-      </li>
-    </ul>
-  </div>
-</nav>
+            <ul class="avatar-dropdown">
+              <li><%= link_to t("link.profile"), user_path(current_user) %></li>
+              <% if current_user.is_admin? %>
+                <li><%= link_to t("link.admin"), admin_reports_path %></li>
+              <% end %>
+              <li><%= link_to t("link.sign_out"), destroy_user_session_path,
+                method: :delete %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="menu-item">
+            <%= link_to t("link.login"), new_user_session_path, method: :get %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </section>
+</header>

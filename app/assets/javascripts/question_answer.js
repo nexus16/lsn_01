@@ -35,7 +35,7 @@ $(document).on('turbolinks:load', function(){
 
 $(document).on('turbolinks:load', function(){
   $('.btn-add-comment').on('click', function(){
-    var parent = $(this).closest('table').attr('id');
+    var parent = $(this).closest('article').attr('id');
     $('#'+parent+' '+'.btn-add-comment').css('display', 'none');
     $('#'+parent+' '+'.add-comment').css('display', 'block');
   });

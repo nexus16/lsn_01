@@ -1,0 +1,146 @@
+$orange: #ff7361;
+$black: #000;
+$white: #fff;
+
+.header {
+  background-color: $orange;
+  height: 86px;
+  position: relative;
+
+  .container {
+    width: 1170px !important;
+  }
+
+  .logo {
+    float: left;
+    line-height: 86px;
+
+    img {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  .notification {
+    position: relative;
+
+    i {
+      bottom: 6px;
+    }
+
+    span {
+      background-color: $black;
+      border-radius: 50%;
+      color: $white;
+      font-size: 12px;
+      font-weight: bold;
+      height: 25px;
+      left: 14px;
+      line-height: 25px;
+      position: absolute;
+      text-align: center;
+      top: -9px;
+      width: 25px;
+    }
+  }
+
+  .avatar {
+    border-radius: 50%;
+    bottom: 7px;
+    height: 43px;
+    left: 18px;
+    position: relative;
+    width: 43px;
+  }
+
+  .menu-header {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 23px;
+  }
+
+  .navigation {
+    background: $orange;
+    float: right;
+    height: 86px;
+  }
+
+  .navigation ul {
+    float: right;
+    position: relative;
+  }
+
+  .navigation li {
+    float: left;
+  }
+
+  .menu-item a {
+    display: block;
+    float: left;
+    padding: 7px 10px;
+  }
+
+  .menu-item ul {
+    background: $orange;
+    display: none;
+    position: absolute;
+    width: 100px;
+    z-index: 2;
+  }
+
+  .item-sub-menu,
+  .item-sub-menu-2 {
+    float: left;
+    width: 100%;
+  }
+
+  .sub-menu-2 {
+    margin-left: 100px;
+  }
+
+  .menu-item:hover .sub-menu {
+    display: block;
+  }
+
+  .item-sub-menu:hover .sub-menu-2 {
+    display: block;
+  }
+
+  .navigation a {
+    color: $black;
+  }
+
+  .menu-item {
+    border-radius: 5px;
+  }
+
+  li:hover {
+    background: $black;
+
+    a {
+      color: $white;
+    }
+  }
+
+  .navigation .sub-menu {
+    margin-top: 36px;
+  }
+
+  .avatar:hover {
+    background: $orange;
+  }
+
+  .menu-item:last-child:hover {
+    background: $orange;
+
+    .avatar-dropdown {
+      display: block;
+      margin-top: 0;
+      top: 41px;
+    }
+  }
+
+  .avatar-dropdown li {
+    width: 100%;
+  }
+}
