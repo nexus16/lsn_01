@@ -8,7 +8,7 @@ $(document).on('turbolinks:load', function(){
 });
 
 $(document).on('turbolinks:load', function(){
-  $('.choose_class').on('change',function(e){
+  $('.choose-class').on('change',function(e){
     e.preventDefault();
     var class_id = this.value;
     $.ajax({
@@ -16,9 +16,9 @@ $(document).on('turbolinks:load', function(){
       url: "/categories/"+class_id,
       dataType: "json",
       success: function(data){
-        $('.display_object').css("display","block").empty();
+        $('.display-object').css("display","block").empty();
         for(var i=0; i<data.length; i++){
-          $('.display_object').append('<option value="' + data[i]["id"] + '">' +
+          $('.display-object').append('<option value="' + data[i]["id"] + '">' +
             data[i]["name"] + '</option> ');
         }
       }

@@ -11,8 +11,8 @@ class Supports::ProfileUser
     @votest_questions = @user.questions.order_vote_questions
   end
 
-  def top_posts
-    @top_posts = @user.questions.order_vote_questions.limit(5)
+  def favorite_questions
+    @user.questions.order_vote_questions.limit(5)
   end
 
   def newest_answers
@@ -21,5 +21,9 @@ class Supports::ProfileUser
 
   def votest_answers
     @votest_answers = @user.answers.order_vote_answers
+  end
+
+  def best_answers
+    @user.answers.order_vote_answers.limit(5)
   end
 end

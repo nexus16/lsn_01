@@ -1,0 +1,13 @@
+$medal-sidebar: #d93;
+$background-sidebar: #fff;
+
+.medal {
+  background-color: $medal-sidebar;
+  border-radius: 2px;
+  color: $background-sidebar;
+  display: inline-block;
+  font-size: 11px;
+  line-height: 18px;
+  margin-bottom: 10px;
+  padding: 0 5px;
+}

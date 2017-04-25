@@ -1,5 +1,25 @@
-<%= link_to question_path(post), class: "collection-item" do %>
-  <span class="badge"><%= post.created_at %></span>
-  <span class="new badge" data-badge-caption="vote"><%= post.vote_count %></span>
-  <%= post.title %>
-<% end %>
+<li>
+  <article class="user-question">
+    <h3>
+      <%= link_to post.title, question_path(post) %>
+    </h3>
+    <div class="question-mark">
+      <i class="material-icons">help</i>
+      <%= t "question" %>
+    </div>
+    <div class="question-bottom">
+      <span class="question-favorite">
+        <i class="material-icons">grade</i>
+        <%= post.vote_count %>
+      </span>
+      <span class="question-date">
+        <i class="material-icons">event_note</i>
+        <%= post.created_at.strftime("%m/%d/%Y") %>
+      </span>
+      <span class="question-comment">
+        <i class="material-icons">forum</i>
+        <%= pluralize(post.answers.count, t("answer")) %>
+      </span>
+    </div>
+  </article>
+</li>
