@@ -1,0 +1,153 @@
+$border-li-sidebar: #ecedee;
+$title-sidebar: #ff7361;
+$border-title-sidebar: #dedede;
+$background-sidebar: #fff;
+$hover-title-sidebar: #2f3239;
+$border-tag-sidebar: #e2e2e2;
+$time-post-sidebar: #c5c4c4;
+$content-post-sidebar: #848991;
+
+.home-sidebar {
+  li {
+    border-bottom: 1px solid $border-li-sidebar;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+
+  .title {
+    border-bottom: 2px solid $border-title-sidebar;
+    color: $title-sidebar;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
+    margin: -20px 0 20px;
+    padding: 20px 0 10px;
+    position: relative;
+  }
+
+  .widget {
+    background: $background-sidebar;
+    border: 1px solid $border-title-sidebar;
+    box-shadow: 0 0 5px $border-title-sidebar;
+    margin-bottom: 30px;
+    padding: 20px;
+  }
+}
+
+.widget-ask {
+  a {
+    background-color: $title-sidebar;
+    border-radius: 2px;
+    color: $background-sidebar;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 30px !important;
+    padding: 10px 15px !important;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+  }
+
+  a:hover {
+    background-color: $hover-title-sidebar;
+  }
+}
+
+.margin-0 {
+  margin: 0;
+}
+
+.popular-tag {
+  .tag-cloud {
+    a {
+      background-color: $hover-title-sidebar;
+      border: 1px solid $border-tag-sidebar;
+      color: $background-sidebar;
+      display: inline-block;
+      font-size: 12px !important;
+      line-height: 20px;
+      margin: 0 0 5px !important;
+      padding: 2px 10px;
+    }
+
+    a:hover {
+      background-color: $title-sidebar;
+    }
+  }
+}
+
+.users-highest-points {
+  .author-img {
+    border: 1px solid $border-title-sidebar;
+    border-radius: 50%;
+    float: left;
+    height: 71px;
+    margin-right: 20px;
+    padding: 2px;
+    width: 71px;
+
+    img {
+      background: none;
+      border-radius: 50%;
+      display: block;
+      float: left;
+      height: 65px;
+      overflow: hidden;
+      vertical-align: middle;
+      width: 65px;
+    }
+  }
+
+  .author-img:hover {
+    background: $title-sidebar;
+  }
+
+  .author-content {
+    h6 {
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 20px;
+      margin: 5px 0;
+    }
+
+    a {
+      color: $title-sidebar;
+    }
+
+    a:hover {
+      color: $hover-title-sidebar;
+    }
+  }
+}
+
+.questions-highest {
+  li {
+    a {
+      color: $hover-title-sidebar;
+    }
+
+    a:hover {
+      color: $title-sidebar;
+    }
+
+    h3 {
+      font-size: 14px !important;
+      font-weight: bold;
+      line-height: 24px;
+      margin-bottom: 0;
+      padding-top: 2px;
+    }
+
+    span {
+      color: $time-post-sidebar;
+      font-size: 12px;
+    }
+
+    .content {
+      color: $content-post-sidebar;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+  }
+}

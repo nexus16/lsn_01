@@ -1,23 +1,34 @@
-<div class="nav-content questions-manager-profile">
-  <ul class="tabs">
-    <li class="tab disabled">
-      <%= link_to t("questions"), "#" %>
-    </li>
-    <li class="tab right-side">
-      <%= link_to t("newest"), "#question_newest", class: "active" %>
-    </li>
-    <li class="tab right-side">
-      <%= link_to t("votest"), "#question_votest" %>
-    </li>
-  </ul>
-</div>
-<div id="question_newest" class="col s12 collection">
-  <% @supports_user.newest_questions.each do |post| %>
-    <%= render "shared/post", post: post %>
+<nav class="nav-extended">
+  <div class="nav-content questions-manager-profile">
+    <ul class="tabs">
+      <li class="tab disabled">
+        <%= link_to t("questions"), "#" %>
+      </li>
+      <li class="tab right-side">
+        <%= link_to t("newest"), "#question_newest", class: "active" %>
+      </li>
+      <li class="tab right-side">
+        <%= link_to t("votest"), "#question_votest" %>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div id="question_newest" class="col s12 collection list-questions-profile">
+  <% if @user.questions.empty? %>
+    <p><%= t "stats_user.question_empty" %></p>
+  <% else %>
+    <% @supports_user.newest_questions.each do |post| %>
+      <%= render "shared/post", post: post %>
+    <% end %>
   <% end %>
 </div>
-<div id="question_votest" class="col s12 collection">
-  <% @supports_user.votest_questions.each do |post| %>
-    <%= render "shared/post", post: post %>
+<div id="question_votest" class="col s12 collection list-questions-profile">
+  <% if @user.questions.empty? %>
+    <p><%= t "stats_user.question_empty" %></p>
+  <% else %>
+    <% @supports_user.votest_questions.each do |post| %>
+      <%= render "shared/post", post: post %>
+    <% end %>
   <% end %>
 </div>

@@ -16,21 +16,51 @@
   </div>
 </nav>
 
-<div id="profile" class="col s12 profile">
-  <div class="collection">
-    <div class="collection-item">
-      <% if @user.avatar? %>
-        <%= image_tag @user.avatar.url, class: "avatar" %>
-      <% else %>
-        <%= image_tag "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-160
-          6916_960_720.png", class: "avatar" %>
-      <% end %>
-      <div class="content-profile">
-        <span class="title"><%= @user.username %></span><br>
-        <span><%= t "fake.point" %></span>
-        <span class="medal">
-          <%= image_tag "gold-medal.png", alt: "medal" %>
-        </span>
+<div id="profile" class="profile">
+  <div class="col s12">
+    <div class="col s12 content">
+      <h2><%= t "about" %>
+        <%= link_to @user.username, user_path %>
+        <span class="medal"><%= t "gold" %></span><br>
+      </h2>
+      <div class="user-profile-img">
+        <%= link_to user_path do %>
+          <% if @user.avatar? %>
+            <%= image_tag @user.avatar.url %>
+          <% else %>
+            <%= image_tag "https://cdn.pixabay.com/photo/2016/08/20/05/38/
+              avatar-1606916_960_720.png" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col s6 about-user">
+        <ul>
+          <li>
+            <i class="material-icons">add</i>
+            <%= t "about_user.registered" %>
+            <span><%= @user.created_at.strftime("%m/%d/%Y") %></span>
+          </li>
+          <li>
+            <i class="material-icons">phone</i>
+            <%= t "about_user.phone" %>
+            <span></span>
+          </li>
+          <li>
+            <i class="material-icons">location_on</i>
+            <%= t "about_user.country" %>
+            <span></span>
+          </li>
+          <li>
+            <i class="material-icons">favorite</i>
+            <%= t "about_user.age" %>
+            <span></span>
+          </li>
+          <li>
+            <i class="material-icons">person</i>
+            <%= t "about_user.sex" %>
+            <span></span>
+          </li>
+        </ul>
       </div>
       <div class="score">
         <table>
@@ -43,22 +73,96 @@
       </div>
     </div>
   </div>
-  <div class="collection">
-    <p><%= t "top_post" %></p>
-    <% @supports_user.top_posts.each do |post| %>
-      <%= render "shared/post", post: post %>
-    <% end %>
+  <div class="col s12">
+    <div class="col s12 content">
+      <div>
+        <h2><%= t "user_stats" %></h2>
+      </div>
+      <div class="user-stats">
+        <ul>
+          <li>
+            <i class="material-icons icon-stats">help</i>
+            <%= link_to "#" do %>
+              <%= t "stats_user.questions" %>
+              <span> ( <span><%= @user.questions.count %></span> ) </span>
+            <% end %>
+          </li>
+          <li class="right">
+            <i class="material-icons icon-stats">chat_bubble</i>
+            <%= link_to "#" do %>
+              <%= t "stats_user.answers" %>
+              <span> ( <span><%= @user.answers.count %></span> ) </span>
+            <% end %>
+          </li>
+          <li>
+            <i class="material-icons icon-stats">grade</i>
+            <%= link_to "#" do %>
+              <%= t "stats_user.favorite_questions" %>
+              <span>
+                ( <span><%= @supports_user.favorite_questions.count %></span> )
+              </span>
+            <% end %>
+          </li>
+          <li class="right">
+            <i class="material-icons icon-stats">ac_unit</i>
+            <%= link_to "#" do %>
+              <%= t "stats_user.best_answers" %>
+              <span>
+                ( <span><%= @supports_user.best_answers.count %></span> )
+              </span>
+            <% end %>
+          </li>
+          <li>
+            <i class="material-icons icon-stats">favorite</i>
+            <%= link_to "#" do %>
+              <%= t "stats_user.points" %>
+              <span> ( <span><%= @user.vote_count %></span> ) </span>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <div class="collection badges">
-    <p><%= t "badges" %></p>
-    <%= render "shared/badges" %>
+
+  <div class="col s12 profile-favo-questions">
+    <ul class="user-questions content">
+      <h2><%= t "stats_user.favorite_questions" %></h2>
+      <% if @supports_user.favorite_questions.empty? %>
+        <p><%= t "stats_user.question_empty" %></p>
+      <% else %>
+        <% @supports_user.favorite_questions.each do |post| %>
+          <%= render "shared/post", post: post %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col s12 best-answers">
+    <ol class="user-answers content">
+      <h2><%= t "stats_user.best_answers" %></h2>
+      <% if @supports_user.best_answers.empty? %>
+        <p><%= t "stats_user.answer_empty" %></p>
+      <% else %>
+        <% @supports_user.best_answers.each do |answer| %>
+          <%= render "shared/best_answers", answer: answer %>
+        <% end %>
+      <% end %>
+    </ol>
+  </div>
+
+  <div class="col s12">
+    <div class="content badges">
+      <h2><%= t "badges" %></h2>
+      <%= render "shared/badges" %>
+    </div>
   </div>
 </div>
+
 <div id="activity" class="col s12 activity">
-  <div class="questions-manager">
+  <div class="col s12 questions-manager">
     <%= render "questions_manager" %>
   </div>
-  <div class="answers-manager">
+  <div class="col s12 answers-manager">
     <%= render "answers_manager" %>
   </div>
 </div>

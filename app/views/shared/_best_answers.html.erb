@@ -1,0 +1,19 @@
+<li>
+  <div class="comment-body">
+    <h3>
+      <%= link_to answer.question.title, question_path(answer.question) %>
+    </h3>
+    <div class="vote-count">
+      <i class="material-icons">thumbs_up_down</i>
+      <span><%= answer.vote_count %></span>
+    </div>
+    <div class="comment-date">
+      <i class="material-icons">event_note</i>
+      <%= answer.created_at.strftime('%c') %>
+    </div>
+    <div class="content-comment">
+      <i class="material-icons">reply</i>
+      <%= link_to answer.content.truncate(60), question_path(answer.question) %>
+    </div>
+  </div>
+</li>

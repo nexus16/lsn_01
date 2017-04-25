@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col s12">
       <label><%= t "text.Choose_class" %></label>
-      <select class="choose_class" required="true">
+      <select class="choose-class" required="true">
         <option value=""></option>
         <%= @supports.list_class.each do |class_item| %>
           <option value="<%= class_item.id %>"><%= class_item.name %></option>
@@ -11,7 +11,7 @@
     </div>
     <div class="col s12">
       <%= f.label :title, t("text.choose_subject") %>
-      <%= f.select :category_id, [], {}, {class: "display_object", required: true} %>
+      <%= f.select :category_id, [], {}, {class: "display-object", required: true} %>
     </div>
     <div class="col s12">
       <%= f.label :title %>

@@ -1,40 +1,63 @@
-<div class="card hot-user">
-  <div class="card-panel teal lighten-2 margin-0">
-    <%= t "button.top_user" %>
-  </div>
-  <ul class="collection margin-0">
-    <% @supports.hot_user.each do |user| %>
-      <li class="collection-item avatar">
-        <%= link_to user_path user do %>
-          <% if user.avatar? %>
-            <%= image_tag question.user.avatar.url, class: "circle" %>
-          <% else %>
-            <img src="https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-160691
-              6_960_720.png" alt="avatar" class="circle">
-          <% end %>
-        <% end %>
-        <span class="title"><%= link_to user.username, user_path(user) %> </span>
-        <p class="group-count">
-          <i class="material-icons"><%= t "text.grade" %></i>
-          <strong><%= user.vote_count %></strong>
-        </p>
-      </li>
-    <% end %>
-  </ul>
+<div class="widget-ask">
+  <%= link_to t("button.ask_a_question"), new_question_path, class: "margin-0" %>
 </div>
-<div class="card hot-question">
-  <div class="card-panel teal lighten-2 margin-0">
+<div class="widget popular-tag margin-0">
+  <h3 class="title">
+    <%= t "popular_tag" %>
+  </h3>
+  <div class="tag-cloud">
+    <% @supports.popular_tag.each do |tag| %>
+      <%= link_to tag, tag_path(tag) %>
+    <% end %>
+  </div>
+</div>
+
+<div class="widget users-highest-points margin-0">
+  <h3 class="title"><%= t "button.top_user" %></h3>
+  <div class="highest-points">
+    <ul>
+      <% @supports.hot_user.each do |user| %>
+      <li>
+        <div class="author-img">
+          <%= link_to user_path user do %>
+            <% if user.avatar? %>
+              <%= image_tag question.user.avatar.url, class: "circle" %>
+            <% else %>
+              <img src="https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-
+                1606916_960_720.png" alt="avatar" class="circle">
+            <% end %>
+          <% end %>
+        </div>
+        <div class="author-content">
+          <h6><%= link_to user.username, user_path(user) %></h6>
+          <span class="medal"><%= t "gold" %></span><br>
+          <span><%= pluralize(user.vote_count, t("point")) %></span>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="widget questions-highest margin-0">
+  <div class="title">
     <%= t "button.top_question" %>
   </div>
-  <ul class="collection margin-0">
+  <ul>
     <% @supports.hot_question.each do |question| %>
-      <li class="collection-item">
-        <p><%= link_to question.title, question_path(question) %></p>
+    <li>
+      <div>
+        <h3><%= link_to question.title, question_path(question) %></h3>
         <p class="group-count">
           <i class="material-icons"><%= t "text.grade" %></i>
           <strong><%= question.vote_count %></strong>
         </p>
-      </li>
+        <p class="content">
+          <%= question.content.truncate(40) %>
+        </p>
+        <span><%= question.created_at.strftime("Posted on %m/%d/%Y") %></span>
+      </div>
+    </li>
     <% end %>
   </ul>
 </div>

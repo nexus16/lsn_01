@@ -1,7 +1,15 @@
 $white: #fff;
 $black: #000;
+$background-body: #f3f3f3;
+
+html {
+  background-color: $background-body;
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
 
 .page-body {
+  margin-left: 50px;
+  margin-right: 50px;
   min-height: 500px;
 }
 
@@ -41,69 +49,15 @@ $black: #000;
   height: 84px;
 }
 
-.left-sitebar {
-  color: $white;
-  position: fixed;
-
-  .card-panel {
-    margin-bottom: 0;
-    padding: 10px;
-  }
-
-  .card {
-    margin-bottom: 0;
-  }
-
-  .list-subject {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    overflow-x:scroll;
-    height:180px;
-  }
-
-  .list-class {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    overflow-x:scroll;
-    height:110px;
-
-    a {
-      margin:10px;
-    }
-  }
-
-  .list-tag {
-    overflow-x:scroll;
-    height:110px;
-  }
-
-  ::-webkit-scrollbar {
-      width: 4px;
-      height: 4px;
-  }
-
-  ::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-      border-radius: 10px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-  }
-}
-
 .header {
-  .avatar {
-    .dropdown-button {
-      height: 64px;
+  .dropdown-button {
+    height: 64px;
 
-      img {
-        height: 50px;
-        width: 50px;
-        border-radius: 50%;
-        margin-top: 7px;
-      }
+    img {
+      border-radius: 50%;
+      height: 50px;
+      margin-top: 7px;
+      width: 50px;
     }
   }
 }
