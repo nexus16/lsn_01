@@ -206,3 +206,7 @@ en:
     reputation_header: "Reputation"
     action_header: "Action"
   search_question: "Search question..."
+  plus: "+1"
+  minus: "-1"
+  class: "Class"
+  subject: "Subject"

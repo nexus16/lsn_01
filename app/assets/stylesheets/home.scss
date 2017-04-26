@@ -1,5 +1,9 @@
 $white: #fff;
 $black: #000;
+$orange: #ff7361;
+$gray: #848991;
+$blue: #2f3239;
+$blue2: #474d5d;
 $background-body: #f3f3f3;
 
 html {
@@ -7,9 +11,9 @@ html {
   font-family: GillSans, Calibri, Trebuchet, sans-serif;
 }
 
+
 .page-body {
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-top: 95px;
   min-height: 500px;
 }
 
@@ -42,6 +46,8 @@ html {
 
 .header {
   position: fixed;
+  top: 0;
+  width: 100%;
   z-index: 1;
 }
 
@@ -63,6 +69,8 @@ html {
 }
 
 .right-sitebar {
+  padding-top: 10px !important;
+
   .hot-user,
   .hot-question {
     .collection-item {
@@ -94,4 +102,33 @@ html {
 
 .text-black {
   color: $black;
+}
+
+.list-question {
+  .card {
+    padding: 0 .75rem;
+  }
+
+  h2 {
+    color: $blue2;
+    font-size: 22px;
+  }
+
+  h2 a {
+    color: $blue;
+  }
+
+  h2 a:hover {
+    color: $orange;
+  }
+
+  p a {
+    color: $gray;
+    font-size: 13px;
+  }
+
+  .owner-question a {
+    color: $orange;
+    font-size: 18px;
+  }
 }

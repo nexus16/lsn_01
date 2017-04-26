@@ -8,7 +8,7 @@
 <% else %>
   $('.btn-add-comment').css('display', 'block');
   $('.add-comment').css('display','none');
-  $('#answer_<%= @answer.parent.id %> .container-comments')
+  $('#answer-<%= @answer.parent.id %> .container-comments')
     .prepend('<%= j render "answers/comment", comment: @answer %>');
   $('.count-answer h5').html('<%= j render "shared/answer_count",
     question: @question %>');
