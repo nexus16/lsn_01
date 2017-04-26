@@ -1,5 +1,6 @@
 class Supports::Home
-  def initialize
+  def initialize current_user
+    @current_user = current_user
   end
 
   def list_question
@@ -24,5 +25,9 @@ class Supports::Home
 
   def popular_tag
     ActsAsTaggableOn::Tag.most_used 10
+  end
+
+  def notifications
+    @current_user.notifications.order_new_notifications
   end
 end

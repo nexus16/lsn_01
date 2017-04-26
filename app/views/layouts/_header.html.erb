@@ -43,11 +43,52 @@
             <% end %>
           </ul>
         </li>
-        <li class="notification menu-item">
-          <i class="material-icons">notifications</i>
-          <span><%= t "fake.point" %></span>
-        </li>
         <% if current_user %>
+          <li class="notification">
+            <i class="material-icons">notifications</i>
+            <span><%= current_user.notifications.noti_not_seen.count %></span>
+            <ul class="collection notification-list">
+              <% @supports.notifications.each do |notification| %>
+                <li class="collection-item click-to-seen
+                  seen-<%= notification.seen %>" data= <%= notification.id %> >
+                  <p>
+                    <%= link_to question_path(notification.question) do %>
+                      <% if notification.answer %>
+                        <% if notification.question.user == current_user %>
+                          <%= render "shared/notification_content",
+                            user_notify: notification.answer.user.username,
+                            notification_content:
+                              t("replied_in_your_question") %>
+                        <% else %>
+                          <%= render "shared/notification_content",
+                            user_notify: notification.answer.user.username,
+                            notification_content:
+                              t("also_replied_in_question_you_following") %>
+                        <% end %>
+                      <% else %>
+                        <% if notification.question.user == current_user %>
+                          <%= render "shared/notification_content",
+                            user_notify: notification.vote.user.username,
+                            notification_content: t("voted_in_your_question") %>
+                        <% else %>
+                          <%= render "shared/notification_content",
+                            user_notify: notification.vote.user.username,
+                            notification_content: t("voted_in_your_answer") %>
+                        <% end %>
+                      <% end %>
+                      <strong>
+                        <%= truncate notification.question.title, length: 40 %>
+                      </strong>
+                    <% end %>
+                  </p>
+                  <p>
+                    <%= time_ago_in_words notification.created_at %>
+                    <%= t "ago" %>
+                  </p>
+                </li>
+              <% end %>
+            </ul>
+          </li>
           <li class="menu-item">
             <% if current_user.avatar? %>
               <%= image_tag current_user.avatar.url, class: "avatar" %>

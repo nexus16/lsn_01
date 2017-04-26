@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170417012327) do
+ActiveRecord::Schema.define(version: 20170427023607) do
 
   create_table "answer_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id",   null: false
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20170417012327) do
     t.string   "picture"
     t.integer  "user_id"
     t.integer  "parent_id"
-    t.integer  "vote_count",  default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "vote_count"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20170417012327) do
     t.boolean  "seen",        default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.integer  "vote_id"
     t.index ["answer_id"], name: "index_notifications_on_answer_id"
     t.index ["question_id"], name: "index_notifications_on_question_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
@@ -137,7 +138,7 @@ ActiveRecord::Schema.define(version: 20170417012327) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "vote_count",             default: 0
+    t.integer  "vote_count"
     t.string   "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

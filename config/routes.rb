@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   resources :searches
   get "/category/:name", to: "categories#index"
   resources :tags
+  resources :notifications, only: :update
 end

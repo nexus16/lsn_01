@@ -10,6 +10,8 @@ class Question < ApplicationRecord
   has_many :reporters, through: :reports, source: :user
   has_many :votes, as: :votable, dependent: :destroy
   has_many :voters, through: :votes, source: :user
+  has_many :answer_users, -> {distinct}, through: :answers, source: :user
+  has_many :notifications
 
   acts_as_taggable
 
