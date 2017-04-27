@@ -1,0 +1,14 @@
+<h4><%= t "admin.questions_manager" %></h4>
+<div class="manager-title">
+  <h5><%= t "admin.question_list_sorted_by_reputation" %></h5>
+</div>
+<label><%= t "admin.order_option" %></label>
+<select class="select-question-option-manager">
+  <option disabled="true" selected="selected"><%= t "admin.choose_option" %></option>
+  <option value="general"><%= t "admin.most_voted" %></option>
+  <option value="for-week"><%= t "admin.most_voted_week" %></option>
+  <option value="for-month"><%= t "admin.most_voted_month" %></option>
+</select>
+<div class="questions-table">
+  <%= render "questions_table" %>
+</div>

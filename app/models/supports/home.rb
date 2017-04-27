@@ -7,7 +7,7 @@ class Supports::Home
   end
 
   def hot_question
-    Question.hot_questions
+    QuestionSortByTimeService.new("for-month", 1).perform[0..4]
   end
 
   def list_class
@@ -19,7 +19,7 @@ class Supports::Home
   end
 
   def hot_user
-    User.hot_user
+    UserSortByTimeService.new("for-month", 1).perform[0..4]
   end
 
   def popular_tag

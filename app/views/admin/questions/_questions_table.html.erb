@@ -1,0 +1,8 @@
+<table class="highlight bordered list-questions">
+  <tr>
+    <th><%= t "admin.title_question_header" %></th>
+    <th><%= t "admin.reputation_header" %></th>
+  </tr>
+  <%= render @questions %>
+</table>
+<%= will_paginate @questions %>

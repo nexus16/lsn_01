@@ -12,3 +12,14 @@ $(document).on('turbolinks:load', function() {
     });
   });
 });
+
+$(document).on('turbolinks:load', function() {
+  $('.select-question-option-manager').material_select();
+  $('.select-question-option-manager').on('change', function(e) {
+    $.ajax({
+      url: '/admin/questions',
+      type: 'get',
+      data: {sort: this.value}
+    });
+  });
+});
