@@ -1,0 +1,9 @@
+<% if @answer.root? %>
+  $('#answer-<%= @answer.id %> h5').html('<%= @answer.content %>');
+  $('#answer-<%= @answer.id %> h5').css('display', 'block');
+  $('#answer-<%= @answer.id %> .edit-answer').css('display', 'none');
+<% else %>
+  $('.comment-<%= @answer.id %> p').html('<%= @answer.content %>');
+  $('.comment-<%= @answer.id %> p').css('display', 'block');
+  $('.comment-<%= @answer.id %> .edit-comment').css('display', 'none');
+<% end %>

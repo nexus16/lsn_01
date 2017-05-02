@@ -5,7 +5,13 @@ $(document).on('turbolinks:load', function(){
     appendTo: '.result'
   });
 
-  var data = []
+  var data = [];
+
+  $('.tag-list').children().each(function(){
+   var tag_item = $(this).find('span').text();
+    data.push(tag_item);
+  });
+
   $('.tag-autocomplete-search').keyup(function (e) {
     var key = e.which;
     if(key == 188){

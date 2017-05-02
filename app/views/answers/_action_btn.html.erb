@@ -1,0 +1,11 @@
+<span class="<%= class_type %>-action">
+  <% if policy(type).update? %>
+    <i class="material-icons btn-edit-<%= class_type %>">edit</i>
+  <% end %>
+  <% if policy(type).destroy? %>
+    <%= link_to question_answer_path(@question, type), remote: true,
+      method: :delete, data: {confirm: t("delete_confirm")} do %>
+      <i class="material-icons">delete</i>
+    <% end %>
+  <% end %>
+</span>

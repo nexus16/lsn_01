@@ -1,8 +1,12 @@
 class Admin::CategoriesController < Admin::AdminController
-  before_action :find_category, except: [:index, :create]
+  before_action :find_category, except: [:index, :create, :new]
 
   def index
     @support_category_admin = Supports::CategoryAdmin.new
+  end
+
+  def new
+    @category = Category.new
   end
 
   def create

@@ -1,3 +1,52 @@
-<div class="container">
-  <%= render "form_question" %>
-</div>
+<%= form_for @question, html: {class: "form-new-question"} do |f| %>
+  <div class="row">
+    <div class="col s12">
+      <label><%= t "text.Choose_class" %></label>
+      <select class="choose-class" required="true">
+        <% @supports.list_class.each do |class_item| %>
+          <% if class_item.name == @question.category.ancestors[0].name %>
+            <option value="<%= class_item.id %>" selected>
+              <%= class_item.name %>
+            </option>
+          <% else %>
+            <option value="<%= class_item.id %>">
+              <%= class_item.name %>
+            </option>
+          <% end %>
+        <% end %>
+      </select>
+    </div>
+    <div class="col s12">
+      <%= f.label :title, t("text.choose_subject") %>
+      <%= f.select :category_id, [], {},
+        {class: "display-object",required: true } do %>
+        <%= options_for_select(@question.category.ancestors[0].descendants.
+          map{|s| [s.name,s.id]}, selected: @question.category.id) %>
+      <% end %>
+    </div>
+    <div class="col s12">
+      <%= f.label :title %>
+      <%= f.text_area :title, required: true %>
+    </div>
+    <div class="col s12">
+      <%= f.label :tag_list, t("tag") %>
+      <%= f.hidden_field :tag_list, class: "tag-list"%>
+    </div>
+    <div class="tag-list col s12">
+      <% @question.tag_list.each do |tag| %>
+        <div class="chip">
+          <span><%= tag %></span><i class="close material-icons">close</i>
+        </div>
+      <% end %>
+    </div>
+    <div class="col s12">
+      <input type="text" name="name" class="tag-autocomplete-search">
+    </div>
+    <div class="result col s12"></div>
+    <div class="col s12">
+      <%= f.label :content %>
+      <%= f.cktext_area :content, required: true %>
+    </div>
+  </div>
+  <%= f.submit :submit, class: "btn btn-primary" %>
+<% end %>
