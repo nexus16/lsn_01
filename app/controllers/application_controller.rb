@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   def load_sitebar
-    @supports = Supports::Home.new
+    @supports = Supports::Home.new current_user
   end
 end
