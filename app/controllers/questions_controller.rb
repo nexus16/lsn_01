@@ -7,6 +7,7 @@ class QuestionsController < ApplicationController
   def show
     @supports_question = Supports::Question.new @question, user_signed_in?,
       current_user
+    @supports_sidebar = Supports::Sidebar.new [@question.category]
   end
 
   def new

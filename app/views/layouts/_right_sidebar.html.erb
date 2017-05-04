@@ -6,7 +6,7 @@
     <%= t "popular_tag" %>
   </h3>
   <div class="tag-cloud">
-    <% @supports.popular_tag.each do |tag| %>
+    <% @supports_sidebar.popular_tag.each do |tag| %>
       <%= link_to tag, tag_path(tag) %>
     <% end %>
   </div>
@@ -16,7 +16,7 @@
   <h3 class="title"><%= t "button.top_user" %></h3>
   <div class="highest-points">
     <ul>
-      <% @supports.hot_user.each do |user| %>
+      <% @supports_sidebar.hot_user.each do |user| %>
       <li>
         <div class="author-img">
           <%= link_to user_path user do %>
@@ -44,7 +44,7 @@
     <%= t "button.top_question" %>
   </div>
   <ul>
-    <% @supports.hot_question.each do |question| %>
+    <% @supports_sidebar.hot_question.each do |question| %>
     <li>
       <div>
         <h3><%= link_to question.title, question_path(question) %></h3>

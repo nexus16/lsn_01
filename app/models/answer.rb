@@ -10,7 +10,10 @@ class Answer < ApplicationRecord
 
   scope :order_new_answers, ->{order created_at: :desc}
   scope :order_vote_answers, ->{order vote_count: :desc}
-  scope :answers_by_time, ->begin_date, end_date{select("id").joins(:votes)
+  scope :answers_id_by_time, ->begin_date, end_date{select("id").joins(:votes)
+    .where("votes.created_at BETWEEN ? AND ?",
+    begin_date, end_date).group("answers.id")}
+  scope :answers_by_time, ->begin_date, end_date{joins(:votes)
     .where("votes.created_at BETWEEN ? AND ?",
     begin_date, end_date).group("answers.id")}
   has_closure_tree

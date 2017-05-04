@@ -1,17 +1,18 @@
 class CategoriesController < ApplicationController
-
   def index
-    objects = Category.list_objects params[:object]
+    subjects = Category.list_objects params[:object]
     @questions = []
-    objects.each do |object|
-      (@questions << object.questions).flatten!
+    subjects.each do |subject|
+      (@questions << subject.questions).flatten!
     end
+    @supports_sidebar = Supports::Sidebar.new subjects
   end
 
   def show
     category = Category.find_by id: params[:id]
     redirect_to root_path unless category
     @support = Supports::CategorySupport.new category
+    @supports_sidebar = Supports::Sidebar.new [category]
     if category.root?
       respond_to do |format|
         format.html

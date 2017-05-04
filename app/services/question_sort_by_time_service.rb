@@ -1,14 +1,12 @@
 class QuestionSortByTimeService
-  def initialize sort, params_page
+  def initialize sort
     @sort = sort
-    @params_page = params_page
   end
 
   def perform
     case @sort
     when "general"
-      @questions = Question.order_vote_questions.paginate(page: @params_page,
-        per_page: Settings.per_page)
+      @questions = Question.order_vote_questions
     when "for-week"
       begin_date = 1.week.ago.beginning_of_week
       end_date = 1.week.ago.end_of_week
@@ -25,10 +23,6 @@ class QuestionSortByTimeService
     questions = Question.questions_by_time begin_date, end_date
     @questions = list_questions questions, begin_date, end_date
     @questions = @questions.sort_by{|question| question.vote_count}.reverse!
-    @questions =
-      WillPaginate::Collection.create(1, 10, @questions.length) do |pager|
-        pager.replace @questions
-      end
   end
 
   def list_questions questions, begin_date, end_date
