@@ -19,7 +19,7 @@ class Supports::Question
   end
 
   def answers
-    @question.answers.order_new_answers
+    @question.answers
   end
 
   def new_answer

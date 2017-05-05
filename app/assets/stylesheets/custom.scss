@@ -2,7 +2,6 @@
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 
 $red: #f00;
-$blue-light: #29b6f6;
 $bg-color: #f3f3f3;
 $boder-color: #dedede;
 $white: #fff;
@@ -110,10 +109,6 @@ body {
       font-size: 30px;
     }
   }
-}
-
-.btn-vote {
-  background-color: $blue-light;
 }
 
 .noti-unvote {
