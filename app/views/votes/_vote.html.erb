@@ -1,70 +1,41 @@
-<% if !user_signed_in? || (current_user == votable.user) %>
-  <div class="vote-up">
-    <%= link_to "#noti-unvote" do %>
-      <input type="submit" value="keyboard_arrow_up"
-        class="material-icons circle">
-    <% end %>
-  </div>
-  <div class="vote-point"><%= votable.vote_count %></div>
-  <div class="vote-down">
-    <%= link_to "#noti-unvote" do %>
-      <input type="submit" value="keyboard_arrow_down"
-        class="material-icons circle">
-    <% end %>
-  </div>
-<% else %>
-  <div class="vote-up">
-    <% if vote.positive? %>
-      <input type="submit" value="keyboard_arrow_up"
-        class="material-icons circle btn-vote">
-    <% else %>
-      <% if vote.new_record? %>
-        <%= form_for vote, remote: true do |f| %>
-          <%= f.hidden_field :question_id, value: @question.id %>
-          <%= f.hidden_field :votable_id, value: votable.id %>
-          <%= f.hidden_field :votable_type, value: votable.class.name %>
-          <%= f.hidden_field :vote_type, value: :positive %>
-          <%= f.submit t("keyboard_arrow_up"),
-            class: "material-icons circle" %>
-        <% end %>
-      <% else %>
-        <%= form_for vote, method: :delete, remote:true do |f| %>
-          <%= f.hidden_field :question_id, value: @question.id %>
-          <%= f.hidden_field :votable_id, value: votable.id %>
-          <%= f.hidden_field :votable_type, value: votable.class.name %>
-          <%= f.submit t("keyboard_arrow_up"),
-            class: "material-icons circle" %>
-        <% end %>
+<ul class="action-vote">
+  <% if !user_signed_in? || (current_user == votable.user) %>
+    <li>
+      <%= link_to "#noti-unvote", class: "vote-up" do %>
+        <input type="submit" value="thumb_up"
+          class="material-icons">
       <% end %>
-    <% end %>
-  </div>
-  <div class="vote-point"><%= votable.vote_count %></div>
-  <div class="vote-down">
-    <% if vote.negative? %>
-      <input type="submit" value="keyboard_arrow_down"
-        class="material-icons circle btn-vote">
-    <% else %>
-      <% if vote.new_record? %>
-        <%= form_for vote, remote:true do |f| %>
-          <%= f.hidden_field :question_id, value: @question.id %>
-          <%= f.hidden_field :votable_id, value: votable.id %>
-          <%= f.hidden_field :votable_type, value: votable.class.name %>
-          <%= f.hidden_field :vote_type, value: :negative %>
-          <%= f.submit t("keyboard_arrow_down"),
-            class: "material-icons circle" %>
-        <% end %>
-      <% else %>
-        <%= form_for vote, method: :delete, remote:true do |f| %>
-          <%= f.hidden_field :question_id, value: @question.id %>
-          <%= f.hidden_field :votable_id, value: votable.id %>
-          <%= f.hidden_field :votable_type, value: votable.class.name %>
-          <%= f.submit t("keyboard_arrow_down"),
-            class: "material-icons circle" %>
-        <% end %>
+    </li>
+    <li>
+      <%= link_to "#noti-unvote", class: "vote-down" do %>
+        <input type="submit" value="thumb_down"
+          class="material-icons">
       <% end %>
-    <% end %>
-  </div>
-<% end %>
+    </li>
+    <li class="vote-point"><%= votable.vote_count %></li>
+  <% else %>
+    <li class="vote-up">
+      <% if vote.positive? %>
+        <input type="submit" value="thumb_up"
+          class="material-icons btn-vote-up">
+      <% else %>
+        <%= render "votes/form_vote", vote: vote, votable: votable,
+          vote_type: :positive %>
+      <% end %>
+    </li>
+    <li class="vote-down">
+      <% if vote.negative? %>
+        <input type="submit" value="thumb_down"
+          class="material-icons btn-vote-down">
+      <% else %>
+        <%= render "votes/form_vote", vote: vote, votable: votable,
+          vote_type: :negative %>
+      <% end %>
+    </li>
+    <li class="vote-point"><%= votable.vote_count %></li>
+  <% end %>
+</ul>
+
 <div id="noti-unvote" class="modal noti-unvote">
   <div class="modal-content">
     <% if user_signed_in? %>

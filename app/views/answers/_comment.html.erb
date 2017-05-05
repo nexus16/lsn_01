@@ -7,9 +7,8 @@
         606916_960_720.png", alt: t("avatar"), class: "circle" %>
     <% end %>
     <span class="title"><%= comment.user.username %></span><br>
-    <span><%= t "fake.point" %></span>
+    <span><%= pluralize comment.user.vote_count, t("point") %></span>
     <span class="medal">
-      <%= image_tag "gold-medal.png", alt: "medal" %>
     </span>
     <div class="content_answer">
       <p>

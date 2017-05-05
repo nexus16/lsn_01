@@ -155,8 +155,8 @@ en:
   failure_report: "report failure"
   title_require_sign_in: "You must be logged in to perform this operation"
   already_report: "You have reported this question"
-  keyboard_arrow_up: "keyboard_arrow_up"
-  keyboard_arrow_down: "keyboard_arrow_down"
+  thumb_up: "thumb_up"
+  thumb_down: "thumb_down"
   thanks_for_feedback: "Thanks for the feedback!"
   content_unvote: "This site is free and open to everyone, but our registered
     users can earn extra privileges like posting, commenting, and voting."

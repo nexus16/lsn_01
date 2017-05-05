@@ -1,4 +1,6 @@
 $color-highlight: #ff0;
+$white: #fff;
+$gray: #444;
 
 .search-result {
   em {
@@ -17,4 +19,11 @@ $color-highlight: #ff0;
 
 .search-not-found {
   font-size: 20px;
+}
+
+.search-input {
+  background-color: $white !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: $gray !important;
 }

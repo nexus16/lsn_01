@@ -1,0 +1,24 @@
+<% if vote.new_record? %>
+  <%= form_for vote, remote: true do |f| %>
+    <%= f.hidden_field :question_id, value: @question.id %>
+    <%= f.hidden_field :votable_id, value: votable.id %>
+    <%= f.hidden_field :votable_type, value: votable.class.name %>
+    <%= f.hidden_field :vote_type, value: vote_type %>
+    <% if vote_type == :positive %>
+      <%= f.submit t("thumb_up"), class: "material-icons" %>
+    <% else %>
+      <%= f.submit t("thumb_down"), class: "material-icons" %>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= form_for vote, method: :delete, remote:true do |f| %>
+    <%= f.hidden_field :question_id, value: @question.id %>
+    <%= f.hidden_field :votable_id, value: votable.id %>
+    <%= f.hidden_field :votable_type, value: votable.class.name %>
+    <% if vote_type == :positive %>
+      <%= f.submit t("thumb_up"), class: "material-icons" %>
+    <% else %>
+      <%= f.submit t("thumb_down"), class: "material-icons" %>
+    <% end %>
+  <% end %>
+<% end %>

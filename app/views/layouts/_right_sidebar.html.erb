@@ -48,12 +48,12 @@
     <li>
       <div>
         <h3><%= link_to question.title, question_path(question) %></h3>
+        <p class="content">
+          <%= question.content.truncate(Settings.size_content).html_safe %>
+        </p>
         <p class="group-count">
           <i class="material-icons"><%= t "text.grade" %></i>
           <strong><%= question.vote_count %></strong>
-        </p>
-        <p class="content">
-          <%= question.content.truncate(40) %>
         </p>
         <span><%= question.created_at.strftime("Posted on %m/%d/%Y") %></span>
       </div>
