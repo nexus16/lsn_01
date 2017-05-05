@@ -1,0 +1,6 @@
+<%= form_for category, url: url do |f| %>
+  <%= f.label t("category") %>
+  <%= f.text_field :name %>
+  <%= f.hidden_field :parent_id, value: class_id %>
+  <%= f.submit %>
+<% end %>

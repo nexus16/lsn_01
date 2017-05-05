@@ -6,7 +6,7 @@ class Answer < ApplicationRecord
 
   has_many :votes, as: :votable, dependent: :destroy
   has_many :voters, through: :votes, source: :user
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
 
   scope :order_new_answers, ->{order created_at: :desc}
   scope :order_vote_answers, ->{order vote_count: :desc}
@@ -16,7 +16,8 @@ class Answer < ApplicationRecord
   scope :answers_by_time, ->begin_date, end_date{joins(:votes)
     .where("votes.created_at BETWEEN ? AND ?",
     begin_date, end_date).group("answers.id")}
-  has_closure_tree
+
+  has_closure_tree dependent: :destroy
 
   def create_notification
     to_notify = [question.user] + question.answer_users

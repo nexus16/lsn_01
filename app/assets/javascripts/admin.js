@@ -23,3 +23,10 @@ $(document).on('turbolinks:load', function() {
     });
   });
 });
+
+$(document).on('turbolinks:load', function() {
+  $('.btn-edit-subject').on('click', function(){
+    var parent = $(this).closest('.collection-item').attr('class').slice(20);
+    $('.' + parent + ' ' + '.edit-subject').css('display', 'block');
+  })
+});

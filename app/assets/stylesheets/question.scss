@@ -78,3 +78,40 @@ $cl-division: #e0e0e0;
   font-size: 14px;
   padding: 7px 15px;
 }
+
+.edit-answer,
+.edit-comment {
+  display: none;
+}
+
+.answer-item p {
+  position: relative;
+
+  .answer-action {
+    display: none;
+    position: absolute;
+    right: 56px;
+  }
+
+  i {
+    color: $orange;
+  }
+}
+
+.answer-item:hover .answer-action {
+  display: initial;
+}
+
+.comment-action {
+  display: none;
+  position: relative;
+  top: 6px;
+
+  i {
+    color: $orange;
+  }
+}
+
+.collection:hover .comment-action {
+  display: initial;
+}

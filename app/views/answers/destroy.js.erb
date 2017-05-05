@@ -1,0 +1,9 @@
+<% if @answer.root? %>
+  $('#answer-<%= @answer.id %>').hide();
+  $('.count-answer h5').html('<%= j render "shared/answer_count",
+    question: @question %>');
+<% else %>
+  $('.comment-<%= @answer.id %>').hide();
+  $('.count-answer h5').html('<%= j render "shared/answer_count",
+    question: @question %>');
+<% end %>

@@ -21,7 +21,7 @@
         <div class="author-img">
           <%= link_to user_path user do %>
             <% if user.avatar? %>
-              <%= image_tag question.user.avatar.url, class: "circle" %>
+              <%= image_tag user.avatar.url, class: "circle" %>
             <% else %>
               <img src="https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-
                 1606916_960_720.png" alt="avatar" class="circle">
