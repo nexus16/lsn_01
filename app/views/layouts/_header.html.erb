@@ -44,13 +44,13 @@
           </ul>
         </li>
         <% if current_user %>
-          <li class="notification">
+          <li class="notification" data-current-user= <%= current_user.id %> >
             <i class="material-icons">notifications</i>
             <span><%= current_user.notifications.noti_not_seen.count %></span>
             <ul class="collection notification-list">
               <% @supports.notifications.each do |notification| %>
                 <li class="collection-item click-to-seen
-                  seen-<%= notification.seen %>" data= <%= notification.id %> >
+                  seen-<%= notification.seen %>" >
                   <p>
                     <%= link_to question_path(notification.question) do %>
                       <% if notification.answer %>

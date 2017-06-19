@@ -6,4 +6,6 @@ class Notification < ApplicationRecord
 
   scope :noti_not_seen, ->{where seen: false}
   scope :order_new_notifications, ->{order created_at: :desc}
+   after_create_commit {
+    NotificationBroadcastJob.perform_later self }
 end

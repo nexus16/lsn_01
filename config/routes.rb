@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   get "/category/:name", to: "categories#index"
   resources :tags
   resources :notifications, only: :update
+  mount ActionCable.server => '/cable'
 end
