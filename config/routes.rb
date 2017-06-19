@@ -7,9 +7,6 @@ Rails.application.routes.draw do
     resources :answers
   end
   root "static_pages#show", page: "home"
-  scope "(:locale)", locale: /en|vi/ do
-    devise_for :users, controllers: {registrations: "registrations"}
-  end
   resources :users, only: :show
   namespace :admin do
     resources :reports, only: :index
@@ -24,4 +21,11 @@ Rails.application.routes.draw do
   get "/category/:name", to: "categories#index"
   resources :tags
   resources :notifications, only: :update
+  devise_for :users, controllers: {omniauth_callbacks:
+    "users/omniauth_callbacks"}
+
+  devise_scope :user do
+    get "sign_in", :to => "devise/sessions#new"
+    get "sign_out", :to => "devise/sessions#destroy"
+  end
 end
